@@ -21,12 +21,23 @@
 
 class AnimatedTranslation : public Translation, public AnimatedObject  {
 private:
-    GLfloat m_deltaX;
-    GLfloat m_deltaY;
-    GLfloat m_deltaZ;
+    GLfloat m_startX;
+    GLfloat m_startY;
+    GLfloat m_startZ;
+
+    GLfloat m_endX;
+    GLfloat m_endY;
+    GLfloat m_endZ;
+
+    double m_Step;
+    double m_Factor;
+    
     
 public: 
-	AnimatedTranslation(GLfloat X, GLfloat Y, GLfloat Z);
+	AnimatedTranslation(GLfloat startX, GLfloat startY, GLfloat startZ,
+            GLfloat endX, GLfloat endY, GLfloat endZ,
+            double Step=.01, double StartFactor=0.0);
+            
 	~AnimatedTranslation();
     int Animate();
 };

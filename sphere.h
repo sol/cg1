@@ -10,7 +10,7 @@ class Sphere : public MeshObject
 
 /** Public methods: */
 public:
-    Sphere( GLdouble Radius, int iSlices, int Stacks, GLenum Style = GLU_FILL );
+    Sphere( GLdouble Radius, int iSlices = 20, int Stacks=20, GLenum Style = GLU_FILL );
     ~Sphere();
 
 };

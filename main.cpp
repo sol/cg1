@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
 
     World MyWorld;
     AnimationController MyAnimationController;
-    Scene* MyScene = Scene3();
+    Scene* MyScene = Scene4();
 //    MyWorld.AddScene( MyScene );
 
     int key;
@@ -127,10 +127,10 @@ Scene* Scene1(){
     MyScene->AddWorldObject( grid );
 
 
-    Sphere *sph2 = new Sphere(2, 10, 10);
-    sph2->SetMaterial(1, 1, 1);
-    MyScene->AddWorldObject( sph2 );
-    sph2->AddTranslation( 10, 4, 0 );
+//    Sphere *sph2 = new Sphere(2, 10, 10);
+//    sph2->SetMaterial(1, 1, 1);
+//    MyScene->AddWorldObject( sph2 );
+//    sph2->AddTranslation( 10, 4, 0 );
 
     Light* light1 = new PointLight(3, 3, 4); 
     light1->AddTranslation( 10, 4, 0 );
@@ -141,9 +141,9 @@ Scene* Scene1(){
     srand(0);
     for( int i = 0; i < 30; i++ ){
 
-        sph1 = new Cylinder(.5, .5, .7);
-//        sph1 = new Cube(.5, .5, .5);        
-//        sph1 = new Sphere( .5, 30, 30, GLU_FILL );
+//        sph1 = new Cylinder(.5, .5, .7);
+//        sph1 = new Cube(.7, .7, .7);        
+        sph1 = new Sphere( .5, 30, 30, GLU_FILL );
         sph1->AddTranslation( rand()%XX / 10, rand()%YY / 10, rand()%ZZ / 10 );
         sph1->SetMaterial(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0);
         
@@ -165,33 +165,12 @@ Scene* Scene2(){
     MyScene->SetCamera( MyCamera );
     MyCamera->AddTranslation( 0, 0, 10 );
 
-    Grid *grid = new Grid(100, 100, 100, 100);
-    grid->SetMaterial(.1, .1, .1);
-    MyScene->AddWorldObject( grid );
-    grid->AddRotation(90, 1, 0, 0);
-
-    MyCamera->AddRotation(-20, 1, 0, 0);
-    MyCamera->AddTranslation(0, 20, 40);
-
-    AnimatedTranslation* trans1 = new AnimatedTranslation(0, .1, 0);
-    AnimatedTranslation *trans2 = new AnimatedTranslation(0, .1, 0);
-        
-    Sphere* sphere = new Sphere( 1, 20, 20, GLU_FILL );
-    sphere->AddTranslation(0, -10, 0 );
-    sphere->SetMaterial(1, 1, 1);
-    sphere->AddTransform( trans1 );
-    MyScene->AddWorldObject( sphere );
-    
-    
-    Light *light1 = new PointLight;
-    light1->AddTranslation(0, -10, 0 );
-    MyScene->AddWorldObject( light1 );
-    light1->AddTransform( trans2 );
-
-    MyScene->GetAnimationController()->AddObject( trans1 );
-    MyScene->GetAnimationController()->AddObject( trans2 );    
     return MyScene;
 }
+
+
+
+
 Scene* Scene3(){
     Scene *MyScene = new Scene;
     Camera *MyCamera = new Camera;
@@ -231,20 +210,63 @@ Scene* Scene3(){
     return MyScene;
 }
 
+
+
+
+
+
 Scene* Scene4(){
     Scene *MyScene = new Scene;
     Camera *MyCamera = new Camera;
 
 //    MyCamera->AddRotation(-20, 1, 0, 0);
-    MyCamera->AddTranslation(0, 0, 40);    
-    
+//    MyCamera->AddRotation(180, 0, 1, 0);
+//    MyCamera->AddTranslation(0, 20, -40);    
 
+    srand(12);
+    int which;
+    MeshObject* mob;
+    AnimatedTranslation *AniTrans;
+    for( int i = 0; i < 20; i++ ){
+        //rings
+        AniTrans = new AnimatedTranslation(0, 0, 0, 0, 0, -300, .0006, i/20.0);
+        MyScene->GetAnimationController()->AddObject( AniTrans );
+
+        Disk *disk = new Disk(5, 5.3, 50, 2);
+        disk->AddTransform( AniTrans );
+        MyScene->AddWorldObject( disk );
+        disk->SetMaterial(.1, i%5/5.0+.2, .1);
+    }
+
+    for( int i = 0; i < 60; i++){
+        //flying objects
+        AniTrans = new AnimatedTranslation(0, 0, -300, rand()%50/10.0-2.5, rand()%50/10.0-2.5, 300, .0012, i/60.0);
+        MyScene->GetAnimationController()->AddObject( AniTrans );
+
+        which = rand() % 3;
+        if( which == 0 )
+            mob = new Sphere(rand()%4/4.0+.2);
+        else if( which == 1 )
+            mob = new Cylinder(.4, .4, rand()%10/10.0+.2);
+        else
+            mob = new Cube(rand()%10/10.0+.2, rand()%10/10.0+.2, rand()%10/10.0+.2);
+            
+        mob->AddRotation(rand()%360, rand()%10/10.0, rand()%10/10.0, rand()%10/10.0);
+        MyScene->AddWorldObject( mob );
+        mob->AddTransform( AniTrans );
+        mob->SetMaterial(rand()%10/10.0+.2, rand()%10/10.0+.2, rand()%10/10.0+.2);
+        
+    }
+
+    Grid *grid = new Grid(500, 500, 100, 100);
+    grid->AddRotation(90, 1, 0, 0);
+    grid->AddTranslation(0, -6, 0);
+    grid->SetMaterial(.1, .1, .1);
+    MyScene->AddWorldObject( grid );
+    
     Light *light1 = new PointLight;
     MyScene->AddWorldObject( light1 );
-    light1->AddTranslation(7, 0, 0);
-
-    Cylinder *cyl1 = new Cylinder(5, 6, 7);
-    MyScene->AddWorldObject( cyl1 );
+    light1->AddTranslation(5, 5, -2);
 
     MyScene->SetCamera( MyCamera );
     return MyScene;
