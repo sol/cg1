@@ -139,7 +139,7 @@ Scene* Scene1(){
         sph1->SetMaterial(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0);
         
         aniRot = new AnimatedRotation( rand() % 360, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand() % 10 / 10.0)+.1 );
-        sph1->AddTransform( aniRot );
+        sph1->AddTransformation( aniRot );
         
         MyAnimationController->AddObject( aniRot );
         MyScene->AddWorldObject( sph1 );
@@ -189,12 +189,12 @@ Scene* Scene3(){
     sphere2->SetMaterial(1, 1, 1);
     MyScene->AddWorldObject( sphere2 );
     sphere2->AddTranslation(0, 4, 7);
-    sphere2->AddTransform( rot1 );
+    sphere2->AddTransformation( rot1 );
 
     Light *light1 = new SpotLight(40);
     MyScene->AddWorldObject( light1 );
     light1->AddTranslation(0, 4, 7);
-    light1->AddTransform( rot2 );
+    light1->AddTransformation( rot2 );
     
     MyScene->SetCamera( MyCamera );
 
@@ -224,7 +224,7 @@ Scene* Scene4(){
         MyScene->GetAnimationController()->AddObject( AniTrans );
 
         Disk *disk = new Disk(5, 5.3, 50, 2);
-        disk->AddTransform( AniTrans );
+        disk->AddTransformation( AniTrans );
         MyScene->AddWorldObject( disk );
         disk->SetMaterial(.1, i%5/5.0+.2, .1);
     }
@@ -244,7 +244,7 @@ Scene* Scene4(){
             
         mob->AddRotation(rand()%360, rand()%10/10.0, rand()%10/10.0, rand()%10/10.0);
         MyScene->AddWorldObject( mob );
-        mob->AddTransform( AniTrans );
+        mob->AddTransformation( AniTrans );
         mob->SetMaterial(rand()%10/10.0+.2, rand()%10/10.0+.2, rand()%10/10.0+.2);
         
     }
