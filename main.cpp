@@ -10,6 +10,43 @@
 //   (at your option) any later version.                                    //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
+//                                                                          //
+//   You should have received a copy of the GNU General Public License      //
+//   with this software, if not it is availabel online at:                  //
+//                                                                          //
+//   http://www.gnu.org/copyleft/gpl.html                                   //
+//                                                                          //
+//   Make sure, you understand the license agreements before using this     //
+//   sofrware.                                                              //
+//                                                                          //
+//////////////////////////////////////////////////////////////////////////////
+//                                                                          //
+//   Comments of the authors Markus Klinik and Simon Hengel:                //
+//                                                                          //
+//   This program was written for a cg-course at the University of          //
+//   Applied Sciences Georg-Simon-Ohm Fachhochschule Nuernberg. As we       //
+//   think, it may be useful getting started with OpenGL. Feel free to      //
+//   use it for any purpose you like (in accordance with the GNU General    //
+//   Public License, see above).                                            //
+//                                                                          //
+//   The following features may be implemented in the future (as we think   //
+//   they coul be useful):                                                  //
+//                                                                          //
+//   - LoadableMesh, a MeshObject, which gets its geometry defenition       //
+//     from a file.                                                         //
+//                                                                          //
+//   -Additional materials like metal, plastic, glass, ...                  //
+//                                                                          //
+//   -Advanced scene-management by the World class.                         //
+//                                                                          //
+//   If you have implemented one of the above or other useful features,     //
+//   please let us know                                                     //
+//                                                                          //
+//   Bug reports and additional comments are welcomed.                      //
+//                                                                          //
+//   Contact: markus.klinik@gmx.de or simon.hengel@web.de                   //
+//                                                                          //
+//////////////////////////////////////////////////////////////////////////////
 
 #include "world.h"
 

@@ -24,7 +24,7 @@ class Scene;
 
 
 //At the moment the class World has not much functionality(it only initialises sdl).
-//In furure it could be used to manage scenes
+//In furure it could be used to manage scenes.
 class World {
 private:
 //    std::vector<Scene*> m_Scenes;
