@@ -42,7 +42,5 @@ Grid::Grid( GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth
 
 
 Grid::~Grid(){
-    glDeleteLists( m_pGLList->GetList(), 1 );
-    delete m_pGLList;
     
 }

@@ -19,8 +19,6 @@ Sphere::Sphere( GLdouble Radius, int iSlices, int iStacks, GLenum Style ){
 
 
 Sphere::~Sphere(){
-    glDeleteLists( m_pGLList->GetList(), 1 );
-    delete m_pGLList;
 }
 
 

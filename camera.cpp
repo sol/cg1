@@ -57,6 +57,7 @@ Camera::Camera() {
     SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
 
+//    glClearColor(1, 1, 1, 1);
     glClearColor(0, 0, 0, 0);
 
     glViewport(0, 0, width, height);
@@ -68,6 +69,22 @@ Camera::Camera() {
     glEnable(GL_LIGHTING);
 
     glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, 0);
+
+    //FOG
+
+//    glEnable(GL_FOG);
+//
+//    GLfloat rgba[] = {1, 1, 1, 1};
+//    glFogfv(GL_FOG_COLOR, rgba);
+//
+//
+//    glFogi(GL_FOG_MODE, GL_LINEAR);
+//    glFogf(GL_FOG_DENSITY, .5);
+//
+//    glFogf(GL_FOG_START, .5);
+//    glFogf(GL_FOG_END, .6);
+
+//    glHint(GL_FOG_HINT, GL_Fastest|FL_NICEST|GL_DONT_CARE);
  
     gluPerspective(60.0, ratio, 1.0, 1024.0);
 }

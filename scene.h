@@ -25,13 +25,12 @@ class Camera;
 class Scene {
 private:
     std::vector<WorldObject*> m_WorldObjects;
-//    std::vector<Light*> m_Lights;
     std::vector<Camera*> m_Cameras;
 
 public:
+    ~Scene();
     void AddWorldObject(WorldObject* pWorldObject) {m_WorldObjects.push_back(pWorldObject);}
     void AddCamera(Camera* pCamera);
-//    void AddLight(Light* pLight) {m_Lights.push_back(pLight);}
 
     void ExecuteAllObjects();
 

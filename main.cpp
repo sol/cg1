@@ -86,17 +86,20 @@ int main(int argc, char** argv) {
     grid.AddRotation(90, 1, 0, 0);
     MyScene.AddWorldObject( &grid );
 
+    Rotation *rot1 = new Rotation(1, 1, 0, 0);
+
 //    SpotLight light1(30);
-    PointLight light1;
-    light1.SetColor(1, 1, 1, 1);
+    PointLight* light1 = new PointLight;
+    light1->AddTransform( rot1 );
+    light1->SetColor(.3, 1, .3, 1);
     Material *mat;
 //    mat.SetColor(.2, .2, .3);
     Sphere* sph1;
     AnimatedRotation *aniRot;
-    srand(49839775);
+    srand(0);
     for( int i = 0; i < 30; i++ ){
 //        sph1 = new Cube( .4, .4, .4, GL_TRIANGLES );
-        sph1 = new Sphere( 2, 30, 30, GLU_FILL );
+        sph1 = new Sphere( .5, 30, 30, GLU_FILL );
         sph1->AddTranslation( rand()%XX / 10, rand()%YY / 10, rand()%ZZ / 10 );
         mat = new Material;
         mat->SetColor(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0);
@@ -106,7 +109,8 @@ int main(int argc, char** argv) {
         MyAnimationController.AddObject( aniRot );
         MyScene.AddWorldObject( sph1 );
         if( i == 0 )
-            sph1->AddSubObject( &light1 );
+            sph1->AddSubObject( light1 );
+            sph1->AddTransform( rot1 );
     }
     while(1)
     {

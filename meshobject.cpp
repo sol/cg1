@@ -20,7 +20,14 @@ MeshObject::MeshObject() {
     m_pMaterial = NULL;
 }
 
+MeshObject::~MeshObject(){
+    if( m_pGLList )
+        glDeleteLists( m_pGLList->GetList(), 1);
+        delete m_pGLList;
 
+    if( m_pMaterial )
+        delete m_pMaterial;
+}
 
 
 

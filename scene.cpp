@@ -30,3 +30,12 @@ void Scene::ExecuteAllObjects() {
     for (it = m_WorldObjects.begin(); it < m_WorldObjects.end(); it++)
         (*it)->Execute();
 }
+
+
+Scene::~Scene(){
+    std::vector<WorldObject*>::iterator it;
+
+    for (it = m_WorldObjects.begin(); it < m_WorldObjects.end(); it++)
+        (*it)->Execute();
+}
+    

@@ -30,7 +30,7 @@ protected:
 
 public:
     MeshObject();
-
+    ~MeshObject();
 
     void SetGLList(GLList* pGLList)                      {m_pGLList = pGLList;}
     void SetMaterial(Material* pMaterial)                {m_pMaterial = pMaterial;}

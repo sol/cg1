@@ -32,6 +32,5 @@ Disk::Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices, GLint Loops
 
 
 Disk::~Disk(){
-    glDeleteLists( m_pGLList->GetList(), 1 );
-    delete m_pGLList;
+    
 }

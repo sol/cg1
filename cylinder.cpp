@@ -31,6 +31,4 @@ Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
     
 }
 Cylinder::~Cylinder(){
-    glDeleteLists( m_pGLList->GetList(), 1 );
-    delete m_pGLList;
 }

@@ -78,9 +78,6 @@ Cube::Cube( GLdouble Height, GLdouble Width, GLdouble Depth, GLenum Style )
 }
 
 
-Cube::~Cube(){
-    glDeleteLists( m_pGLList->GetList(), 1 );
-    delete m_pGLList;
-}
+Cube::~Cube(){}
 
 
