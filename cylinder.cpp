@@ -12,10 +12,11 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "cylinder.h"
-#include "GL/glu.h"
+#include <GL/glu.h>
+#include "disk.h"
 
 Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
-                                                    GLint Slices, GLint Stacks, GLenum Style){
+            GLint Slices, GLint Stacks, GLenum Style){
     GLuint list = glGenLists(1);
     glNewList(list, GL_COMPILE);
 
@@ -27,8 +28,17 @@ Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
     m_pGLList = new GLList( list );
 
     gluDeleteQuadric( cylinder );
-
     
+    //bottom plate
+    Disk* bottom = new Disk( 0, BaseRadius, Slices, 10, Style);
+    bottom->AddRotation(180, 1, 0, 0);
+    AddSubObject( bottom );
+
+    //top plate
+    Disk* top = new Disk( 0, TopRadius, Slices, 10, Style);
+    top->AddTranslation(0, 0, Height);
+    AddSubObject( top );
+
 }
 Cylinder::~Cylinder(){
 }

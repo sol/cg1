@@ -74,10 +74,10 @@ int AnimationController::TogglePause(){
 }
 
 void AnimationController::DeleteAllObjects(){
-    std::vector<AnimatedObject*>::iterator it;
-
-    for (it = m_AnimatedObjects.begin(); it < m_AnimatedObjects.end(); it++)
-        delete *it;
+//    std::vector<AnimatedObject*>::iterator it;
+//
+//    for (it = m_AnimatedObjects.begin(); it < m_AnimatedObjects.end(); it++)
+//        delete *it;
 
     m_AnimatedObjects.clear();
 }

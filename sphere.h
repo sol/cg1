@@ -3,13 +3,14 @@
 #define SPHERE_H
 
 #include "meshobject.h"
+#include <GL/glu.h>
 
 class Sphere : public MeshObject
 {
 
 /** Public methods: */
 public:
-    Sphere( GLdouble Radius, int iSlices, int Stacks, GLenum Style  );
+    Sphere( GLdouble Radius, int iSlices, int Stacks, GLenum Style = GLU_FILL );
     ~Sphere();
 
 };

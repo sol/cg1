@@ -14,13 +14,14 @@
 #ifndef CYLINDER_H
 #define CYLINDER_H
 
-#include <meshobject.h>
+#include "meshobject.h"
+#include <GL/glu.h>
 
 
 class Cylinder : public MeshObject  {
 public: 
 	Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
-                                                    GLint Slices, GLint Stacks, GLenum Style);
+        GLint Slices=20, GLint Stacks=20, GLenum Style = GLU_FILL);
 	~Cylinder();
 };
 

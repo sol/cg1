@@ -20,7 +20,7 @@
 
 class DirectionalLight : public Light {
 public:
-    DirectionalLight();
+    DirectionalLight(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
 
 

@@ -16,6 +16,11 @@
 #include "meshobject.h"
 
 
+Scene::Scene(){
+    m_pAnimationController = new AnimationController;
+}
+
+
 void Scene::SetCamera(Camera* pCamera) {
     m_WorldObjects.push_back(pCamera);
     pCamera->SetAssociatedScene(this);
@@ -37,10 +42,13 @@ Scene::~Scene(){
     std::vector<WorldObject*>::iterator it;
 
     for (it = m_WorldObjects.begin(); it < m_WorldObjects.end(); it++)
-        (*it)->Execute();
+        delete (*it);
+
+    delete m_pAnimationController;
 }
 
 void Scene::Render(){
+    m_pAnimationController->Animate();
     m_pActiveCamera->Render();
 }
     

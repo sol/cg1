@@ -14,11 +14,12 @@
 #ifndef DISK_H
 #define DISK_H
 
-#include <meshobject.h>
+#include "meshobject.h"
+#include <GL/glu.h>
 
 class Disk : public MeshObject  {
 public: 
-	Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices, GLint Loops, GLenum Style);
+	Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices=20, GLint Loops=10, GLenum Style = GLU_FILL);
 	~Disk();
 };
 

@@ -20,7 +20,7 @@
 
 class SpotLight : public Light {
 public:
-    SpotLight(GLfloat Angle);
+    SpotLight(GLfloat Angle = 30, GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
 
 

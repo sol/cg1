@@ -8,7 +8,7 @@ class Cube : public MeshObject
 {
 
 public:
-    Cube( GLdouble Height, GLdouble Width, GLdouble Depth, GLenum Mode );
+    Cube( GLdouble Height, GLdouble Width, GLdouble Depth, GLenum Mode = GL_TRIANGLES );
     ~Cube();
 
 
