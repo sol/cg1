@@ -17,6 +17,7 @@
 #include "world.h"
 
 
+//a class to map OpenGL execution lists
 class GLList {
 private:
     GLuint m_DisplayList;
@@ -26,7 +27,5 @@ public:
     void ExecuteList()          { glCallList(m_DisplayList); }
     GLuint GetList()            { return m_DisplayList; }
 };
-
-
 
 #endif

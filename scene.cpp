@@ -28,7 +28,6 @@ void Scene::SetCamera(Camera* pCamera) {
 }
 
 
-
 void Scene::ExecuteAllObjects() {
     
     std::vector<WorldObject*>::iterator it;
@@ -47,8 +46,9 @@ Scene::~Scene(){
     delete m_pAnimationController;
 }
 
+
 void Scene::Render(){
     m_pAnimationController->Animate();
     m_pActiveCamera->Render();
 }
-    
+ 

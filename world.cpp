@@ -16,17 +16,12 @@
 
 World::World() {
     //init SDL
-    /* First, initialize SDL's video subsystem. */
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
-        /* Failed, exit. */
-        fprintf( stderr, "Video initialization failed: %s\n",
-             SDL_GetError( ) );
-
+        fprintf( stderr, "Video initialization failed: %s\n", SDL_GetError( ) );
         SDL_Quit();
         exit(1);
     }
 }
-
 
 
 World::~World() {

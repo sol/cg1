@@ -16,7 +16,7 @@
 
 #include "world.h"
 #include "animationcontroller.h"
-#include "lights.h"
+
 
 class WorldObject;
 class Camera;
@@ -31,10 +31,13 @@ private:
 public:
     Scene();
     ~Scene();
+    
     void AddWorldObject(WorldObject* pWorldObject) { m_WorldObjects.push_back(pWorldObject); }
-    void SetCamera( Camera* pCamera );
+    void SetCamera( Camera* pCamera );//sets current camera and adds it to the world object vector
+    
     void Render();
     void ExecuteAllObjects();
+    
     AnimationController* GetAnimationController()  { return m_pAnimationController; }
 
 };
