@@ -14,10 +14,7 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 
-
-
 #include <GL/gl.h>
-
 #include <worldobject.h>
 
 
@@ -52,13 +49,13 @@ protected:
 public:
     static int GetMaxNrOfLights() {return m_MaxNrOfLights;} //you have to create at least one light to get a valid value
     
-    Light();
+    Light(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
     ~Light();
 
     void Enable()  {if (m_IsValid) glEnable(m_Light);}
     void Disable() {if (m_IsValid) glDisable(m_Light);}
 
-    void SetColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+    void SetColor(GLfloat red, GLfloat green, GLfloat blue);
 };
 
 #endif

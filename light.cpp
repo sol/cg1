@@ -12,15 +12,14 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "light.h"
-
+#include <stdlib.h>
 
 
 bool* Light::m_pIsAssigned = NULL;
 int Light::m_MaxNrOfLights = 0;
 
 
-
-Light::Light() {
+Light::Light(GLfloat red, GLfloat green, GLfloat blue) {
 
     if (!m_pIsAssigned) {
         glGetIntegerv(GL_MAX_LIGHTS, &m_MaxNrOfLights);
@@ -38,10 +37,10 @@ Light::Light() {
         m_Light = GL_LIGHT0 + i;
         m_IsValid = true;
 
-        //set all glLight prameters to gl-defaults
-        m_aAmbient[0]  = 0.0; m_aAmbient[1]  = 0.0; m_aAmbient[2]  = 0.0; m_aAmbient[3]  = 1.0;
-        m_aDiffuse[0]  = 0.0; m_aDiffuse[1]  = 0.0; m_aDiffuse[2]  = 0.0; m_aDiffuse[3]  = 1.0;
-        m_aSpecular[0] = 0.0; m_aSpecular[1] = 0.0; m_aSpecular[2] = 0.0; m_aSpecular[3] = 1.0;
+        //set all glLight prameters
+        SetColor(red, green, blue);
+        
+        
         m_aPosition[0] = 0.0; m_aPosition[1] = 0.0; m_aPosition[2] = 1.0; m_aPosition[3] = 0.0;
         m_aSpotDirection[0] = 0.0; m_aSpotDirection[1] = 0.0; m_aSpotDirection[2] = -1.0;
         m_SpotExponent = 0.0;
@@ -58,14 +57,12 @@ Light::Light() {
 }
 
 
-
 Light::~Light() {
     if (m_IsValid) {
         Disable();
         m_pIsAssigned[m_Light - GL_LIGHT0] = false;
     }
 }
-
 
 
 void Light::DefineObject() {
@@ -88,9 +85,8 @@ void Light::DefineObject() {
 }
 
 
-
-void Light::SetColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
-    m_aAmbient[0]  = red; m_aAmbient[1]  = green; m_aAmbient[2]  = blue; m_aAmbient[3]  = alpha;
-    m_aDiffuse[0]  = red; m_aDiffuse[1]  = green; m_aDiffuse[2]  = blue; m_aDiffuse[3]  = alpha;
-    m_aSpecular[0] = red; m_aSpecular[1] = green; m_aSpecular[2] = blue; m_aSpecular[3] = alpha;
+void Light::SetColor(GLfloat red, GLfloat green, GLfloat blue) {
+    m_aAmbient[0]  = red; m_aAmbient[1]  = green; m_aAmbient[2]  = blue; m_aAmbient[3]  = 1;
+    m_aDiffuse[0]  = red; m_aDiffuse[1]  = green; m_aDiffuse[2]  = blue; m_aDiffuse[3]  = 1;
+    m_aSpecular[0] = red; m_aSpecular[1] = green; m_aSpecular[2] = blue; m_aSpecular[3] = 1;
 }

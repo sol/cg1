@@ -15,93 +15,19 @@
 #include <stdlib.h>
 
 
-
-Material::Material(){
-    m_Ambient = NULL;
-    m_Diffuse = NULL;
-    m_Emission = NULL;
-    m_Specular = NULL;
-    m_Shininess = NULL;
+void Material::Apply() {
+    glMaterialfv( GL_FRONT, GL_AMBIENT, m_aAmbient );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, m_aDiffuse );
+    glMaterialfv( GL_FRONT, GL_SPECULAR, m_aSpecular );
+    glMaterialfv( GL_FRONT, GL_EMISSION, m_aEmission );
+    glMaterialf( GL_FRONT, GL_SHININESS, m_Shininess );
 }
 
 
-Material::~Material(){
-    if( m_Ambient ) delete[] m_Ambient;
-    if( m_Diffuse ) delete[] m_Diffuse;
-    if( m_Emission ) delete[] m_Emission;
-    if( m_Specular ) delete[] m_Specular;
-    if( m_Shininess ) delete[] m_Shininess;
+void Material::SetColor(GLfloat red, GLfloat green, GLfloat blue) {
+    m_aAmbient[0]  = red; m_aAmbient[1]  = green; m_aAmbient[2]  = blue; m_aAmbient[3]  = 1;
+    m_aDiffuse[0]  = red; m_aDiffuse[1]  = green; m_aDiffuse[2]  = blue; m_aDiffuse[3]  = 1;
+    m_aSpecular[0] = red; m_aSpecular[1] = green; m_aSpecular[2] = blue; m_aSpecular[3] = 1;
+    m_aEmission[0] = 0;   m_aEmission[0] = 0;     m_aEmission[0] = 0;    m_aEmission[0] = 1;
+    m_Shininess = 0.0;
 }
-
-void Material::Apply(){
-    //apply the Material settings
-    if( m_Ambient ) glMaterialfv( GL_FRONT, GL_AMBIENT, m_Ambient );
-    if( m_Diffuse ) glMaterialfv( GL_FRONT, GL_DIFFUSE, m_Diffuse );
-    if( m_Emission ) glMaterialfv( GL_FRONT, GL_EMISSION, m_Emission );
-    if( m_Specular ) glMaterialfv( GL_FRONT, GL_SPECULAR, m_Specular );
-    if( m_Shininess ) glMaterialfv( GL_FRONT, GL_SHININESS, m_Shininess );    
-
-}
-
-
-void Material::SetAmbient(GLfloat R, GLfloat G, GLfloat B, GLfloat A ){
-    if( !m_Ambient )
-        m_Ambient = new GLfloat[4];
-
-    m_Ambient[0] = R;
-    m_Ambient[1] = G;
-    m_Ambient[2] = B;
-    m_Ambient[3] = A;
-}
-
-void Material::SetDiffuse(GLfloat R, GLfloat G, GLfloat B, GLfloat A ){
-    if( !m_Diffuse )
-        m_Diffuse = new GLfloat[4];
-
-    m_Diffuse[0] = R;
-    m_Diffuse[1] = G;
-    m_Diffuse[2] = B;
-    m_Diffuse[3] = A;
-}
-void Material::SetSpecular(GLfloat R, GLfloat G, GLfloat B, GLfloat A ){
-    if( !m_Specular )
-        m_Specular = new GLfloat[4];
-
-    m_Specular[0] = R;
-    m_Specular[1] = G;
-    m_Specular[2] = B;
-    m_Specular[3] = A;
-}
-
-
-void Material::SetEmission(GLfloat R, GLfloat G, GLfloat B, GLfloat A ){
-    if( !m_Emission )
-        m_Emission = new GLfloat[4];
-
-    m_Emission[0] = R;
-    m_Emission[1] = G;
-    m_Emission[2] = B;
-    m_Emission[3] = A;
-}
-
-
-void Material::SetShininess(GLfloat R, GLfloat G, GLfloat B, GLfloat A ){
-    if( !m_Shininess )
-        m_Shininess = new GLfloat[4];
-
-    m_Shininess[0] = R;
-    m_Shininess[1] = G;
-    m_Shininess[2] = B;
-    m_Shininess[3] = A;
-    
-}
-
-
-void Material::SetColor(GLfloat R, GLfloat G, GLfloat B ){
-    SetDiffuse(R, G, B, 1);
-    SetAmbient(R, G, B, 1);
-    SetEmission(R, G, B, 1);
-    SetShininess(R, G, B, 1);
-    SetSpecular(R, G, B, 1);
-}
-

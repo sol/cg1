@@ -132,19 +132,16 @@ Scene* Scene1(AnimationController* MyAnimationController){
 //    SpotLight light1(30);
     PointLight* light1 = new PointLight;
     light1->AddTransform( rot1 );
-    light1->SetColor(.3, 1, .3, 1);
-    Material *mat;
-//    mat.SetColor(.2, .2, .3);
+    light1->SetColor(.3, 1, .3);
     Sphere* sph1;
     AnimatedRotation *aniRot;
-    srand(0);
+    srand(2355753);
     for( int i = 0; i < 30; i++ ){
 //        sph1 = new Cube( .4, .4, .4, GL_TRIANGLES );
         sph1 = new Sphere( .5, 30, 30, GLU_FILL );
         sph1->AddTranslation( rand()%XX / 10, rand()%YY / 10, rand()%ZZ / 10 );
-        mat = new Material;
-        mat->SetColor(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0);
-        sph1->SetMaterial( mat );
+        
+        sph1->SetMaterial(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0);
         aniRot = new AnimatedRotation( rand() % 360, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand() % 10 / 10.0)+.1 );
         sph1->AddTransform( aniRot );
         MyAnimationController->AddObject( aniRot );
@@ -165,9 +162,8 @@ Scene* Scene2(AnimationController* MyAnimationController){
     MyCamera->AddTranslation( 0, 0, 10 );
 
     Disk *disk1 = new Disk( 3, 4, 20, 5, GLU_FILL );
-    Material *mat1 = new Material();
-    mat1->SetColor(.2, .2, .3);
-    disk1->SetMaterial( mat1 );
+    
+    disk1->SetMaterial(.2, .2, .3);
     MyScene->AddWorldObject( disk1 );
     
     return MyScene;

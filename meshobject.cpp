@@ -14,11 +14,11 @@
 #include "meshobject.h"
 
 
-
 MeshObject::MeshObject() {
     m_pGLList = NULL;
     m_pMaterial = NULL;
 }
+
 
 MeshObject::~MeshObject(){
     if( m_pGLList )
@@ -30,8 +30,6 @@ MeshObject::~MeshObject(){
 }
 
 
-
-
 void MeshObject::DefineObject() {
     //apply material
     if( m_pMaterial )
@@ -41,5 +39,13 @@ void MeshObject::DefineObject() {
     //send the mesh to the pipeline
     if (m_pGLList)
         m_pGLList->ExecuteList();
-    
 }
+
+
+void MeshObject::SetMaterial(GLfloat red, GLfloat green, GLfloat blue) {
+    if (m_pMaterial)
+        delete m_pMaterial;
+
+    m_pMaterial = new Material(red, green, blue);
+}
+

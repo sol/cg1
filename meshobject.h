@@ -19,6 +19,7 @@
 #include "transformation.h"
 #include <vector>
 #include "worldobject.h"
+#include <GL/gl.h>
 
 class MeshObject : public WorldObject {
 private:
@@ -28,13 +29,13 @@ protected:
     GLList* m_pGLList;
     Material* m_pMaterial;
 
+    void SetGLList(GLList* pGLList)                      {m_pGLList = pGLList;}
+
 public:
     MeshObject();
     ~MeshObject();
 
-    void SetGLList(GLList* pGLList)                      {m_pGLList = pGLList;}
-    void SetMaterial(Material* pMaterial)                {m_pMaterial = pMaterial;}
-
+    void SetMaterial(GLfloat red, GLfloat green, GLfloat blue);
 };
 
 

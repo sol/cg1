@@ -1,26 +1,35 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                          //
+//   material.h - (c) 2003 by The Marrowmoon Group                          //
+//                                                                          //
+//////////////////////////////////////////////////////////////////////////////
+//                                                                          //
+//   This program is free software; you can redistribute it and/or modify   //
+//   it under the terms of the GNU General Public License as published by   //
+//   the Free Software Foundation; either version 2 of the License, or      //
+//   (at your option) any later version.                                    //
+//                                                                          //
+//////////////////////////////////////////////////////////////////////////////
+
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
 #include <GL/gl.h>
 
+
 class Material
 {
 private:
-    GLfloat* m_Ambient, *m_Diffuse, *m_Specular, *m_Emission, *m_Shininess;
+    GLfloat m_aAmbient[4];
+    GLfloat m_aDiffuse[4];
+    GLfloat m_aSpecular[4];
+    GLfloat m_aEmission[4];
+    GLfloat m_Shininess;
     
 public:
-    Material();
-    ~Material();
+    Material(GLfloat red = 0.2, GLfloat green = 0.2, GLfloat blue = 0.2) {SetColor(red, green, blue);}
 
-    void SetColor( GLfloat R, GLfloat G, GLfloat B );
-
-    //setters...
-    void SetAmbient(GLfloat R, GLfloat G, GLfloat B, GLfloat A );
-    void SetDiffuse(GLfloat R, GLfloat G, GLfloat B, GLfloat A );
-    void SetSpecular(GLfloat R, GLfloat G, GLfloat B, GLfloat A );
-    void SetEmission(GLfloat R, GLfloat G, GLfloat B, GLfloat A );
-    void SetShininess(GLfloat R, GLfloat G, GLfloat B, GLfloat A );
-
+    void SetColor(GLfloat red, GLfloat green, GLfloat blue);
     void Apply();
 };
 
