@@ -48,9 +48,7 @@ Light::Light(GLfloat red, GLfloat green, GLfloat blue) {
         m_aSpotDirection[0] = 0.0; m_aSpotDirection[1] = 0.0; m_aSpotDirection[2] = -1.0;
         m_SpotExponent = 0.0;
         m_SpotCutoff = 180.0;
-        m_ConstantAttenuation = 1.0;
-        m_LinearAttenuation = 0.0;
-        m_QuadraticAttenuation = 0.0;
+
 
         DefineObject();
         Enable();

@@ -216,7 +216,7 @@ Scene* Scene2(){
     Grid *grid = new Grid(100, 100, 100, 100);
     grid->AddRotation(90, 1, 0, 0);
     grid->AddTranslation(0, -.5, 0);
-    grid->SetMaterial(.1, .1, .1);
+    grid->SetMaterial(.2, .2, .2);
     MyScene->AddWorldObject( grid );
 
     double speed = 0.01;
@@ -294,6 +294,9 @@ Scene* Scene2(){
     RUpperArm->AddTransformation( WalkArm2 );
 
     RUpperArm->AddTranslation( .24, .30, .05 );
+
+
+
     Cylinder* RLowerArm = new Cylinder( .05, .05, .2, detail, detail );
     //AddCustomRotations!
     RLowerArm->AddRotation(-90, 0, 1, 0);
@@ -335,7 +338,7 @@ Scene* Scene2(){
 
     Sphere *lightbulb = new Sphere(.02);
     lightbulb->SetMaterial(1, 1, 1);
-    Light *light1 = new PointLight;
+    Light *light1 = new PointLight(2, 2, 2);
     light1->AddTranslation(0, 0, -.1);
 
     LLowerArm->AddSubObject( light1 );
@@ -375,13 +378,14 @@ Scene* Scene3(){
     MyScene->GetAnimationController()->AddObject( rot1 );
     MyScene->GetAnimationController()->AddObject( rot2 );
     
+
     Sphere* sphere2 = new Sphere(.5, 20, 20);
     sphere2->SetMaterial(10, 10, 10);
     MyScene->AddWorldObject( sphere2 );
     sphere2->AddTranslation(0, 4, 7);
     sphere2->AddTransformation( rot1 );
 
-    Light *light1 = new PointLight;
+    Light *light1 = new PointLight(2, 2, 2, POINTLIGHT_LINEAR);
     MyScene->AddWorldObject( light1 );
     light1->AddTranslation(0, 4, 7);
     light1->AddTransformation( rot2 );
@@ -452,9 +456,10 @@ Scene* Scene4(){
     grid->SetMaterial(.1, .1, .1);
     MyScene->AddWorldObject( grid );
     
-    Light *light1 = new PointLight;
+    Light *light1 = new PointLight(10.0, 10.0, 10.0, POINTLIGHT_LINEAR);
     MyScene->AddWorldObject( light1 );
-    light1->AddTranslation(10, 10, -2);
+    light1->AddTranslation(10, 10, 2);
+
 
     MyScene->SetCamera( MyCamera );
     return MyScene;

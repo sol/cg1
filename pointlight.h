@@ -15,6 +15,9 @@
 #define POINTLIGHT_H
 
 #include "light.h"
+#define POINTLIGHT_LINEAR 0
+#define POINTLIGHT_CONSTANT 1
+#define POINTLIGHT_QUADRATIC 2
 
 
 namespace Lights {
@@ -23,7 +26,7 @@ namespace Lights {
 //this class provides Light with a constructor appropriate for point lights
 class PointLight : public Light {
 public:
-    PointLight(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
+    PointLight(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0, int type = POINTLIGHT_CONSTANT);
 };
 
     
