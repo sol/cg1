@@ -130,7 +130,7 @@ int main(int argc, char** argv) {
 
     World MyWorld;
     AnimationController MyAnimationController;
-    Scene* MyScene = Scene4();
+    Scene* MyScene = Scene1();
 //    MyWorld.AddScene( MyScene );
 
     int key;
@@ -178,7 +178,7 @@ Scene* Scene1(){
 //    MyScene->AddWorldObject( sph2 );
 //    sph2->AddTranslation( 10, 4, 0 );
 
-    Light* light1 = new PointLight(3, 3, 4); 
+    Light* light1 = new PointLight(2, 2, 2); 
     light1->AddTranslation( 10, 4, 0 );
     MyScene->AddWorldObject( light1 );
 

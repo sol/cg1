@@ -24,9 +24,17 @@ void Material::Apply() {
 
 
 void Material::SetColor(GLfloat red, GLfloat green, GLfloat blue) {
-    m_aAmbient[0]  = .2*red; m_aAmbient[1]  = .2*green; m_aAmbient[2]  = .2*blue; m_aAmbient[3]  = 1;
-    m_aDiffuse[0]  = red; m_aDiffuse[1]  = green; m_aDiffuse[2]  = blue; m_aDiffuse[3]  = 1;
-    m_aSpecular[0] = 2*red; m_aSpecular[1] = 2*green; m_aSpecular[2] = 2*blue; m_aSpecular[3] = 1;
-    m_aEmission[0] = 0;   m_aEmission[1] = 0;     m_aEmission[2] = 0;    m_aEmission[3] = 1;
+
+    SetMaterialComponent(m_aAmbient, 0.6 * red, 0.6 * green, 0.6 * blue, 1);
+    SetMaterialComponent(m_aDiffuse, red, green, blue, 1);
+    SetMaterialComponent(m_aSpecular, 2 * red, 2 * green, 2 * blue, 1);
+    SetMaterialComponent(m_aEmission, 0, 0, 0, 1);
+
     m_Shininess = 80;
 }
+
+
+void Material::SetMaterialComponent(GLfloat* Component, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
+    Component[0] = red; Component[1] = green; Component[2] = blue; Component[3] = alpha;
+}
+
