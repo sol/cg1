@@ -14,160 +14,51 @@ configure:869: checking for working autoheader
 configure:882: checking for working makeinfo
 configure:944: checking for a C-Compiler
 configure:950: checking for gcc
-configure:1056: checking whether the C compiler (gcc -O0 -g3 -Wall  ) works
-configure:1072: gcc -o conftest -O0 -g3 -Wall    conftest.c  1>&5
+configure:1056: checking whether the C compiler (gcc  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT    -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread ) works
+configure:1072: gcc -o conftest  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT     -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread  conftest.c  1>&5
 configure:1069: warning: return-type defaults to `int'
-configure:1098: checking whether the C compiler (gcc -O0 -g3 -Wall  ) is a cross-compiler
+configure:1098: checking whether the C compiler (gcc  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT    -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread ) is a cross-compiler
 configure:1103: checking whether we are using GNU C
-configure:1112: gcc -E conftest.c
 configure:1180: checking how to run the C preprocessor
-configure:1201: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1242: checking for a C++-Compiler
 configure:1248: checking for g++
-configure:1364: checking whether the C++ compiler (g++ -O0 -g3 -Wall  ) works
-configure:1380: g++ -o conftest -O0 -g3 -Wall    conftest.C  1>&5
-configure:1406: checking whether the C++ compiler (g++ -O0 -g3 -Wall  ) is a cross-compiler
+configure:1364: checking whether the C++ compiler (g++  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT    -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread ) works
+configure:1380: g++ -o conftest  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT     -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread  conftest.C  1>&5
+configure:1406: checking whether the C++ compiler (g++  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT    -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread ) is a cross-compiler
 configure:1411: checking whether we are using GNU C++
-configure:1420: g++ -E conftest.C
 configure:1643: checking whether g++ supports -fexceptions
 configure:1677: checking whether g++ supports -frtti
 configure:1715: checking how to run the C++ preprocessor
-configure:1734: g++ -E  conftest.C >/dev/null 2>conftest.out
 configure:1814: checking whether g++ supports -frepo
 configure:1954: checking for Cygwin environment
-configure:1970: gcc -c -O0 -g3 -Wall  conftest.c 1>&5
-configure: In function `main':
-configure:1966: `__CYGWIN32__' undeclared (first use in this function)
-configure:1966: (Each undeclared identifier is reported only once
-configure:1966: for each function it appears in.)
-configure: failed program was:
-#line 1959 "configure"
-#include "confdefs.h"
-
-int main() {
-
-#ifndef __CYGWIN__
-#define __CYGWIN__ __CYGWIN32__
-#endif
-return __CYGWIN__;
-; return 0; }
 configure:1987: checking for mingw32 environment
-configure:1999: gcc -c -O0 -g3 -Wall  conftest.c 1>&5
-configure: In function `main':
-configure:1995: `__MINGW32__' undeclared (first use in this function)
-configure:1995: (Each undeclared identifier is reported only once
-configure:1995: for each function it appears in.)
-configure: failed program was:
-#line 1992 "configure"
-#include "confdefs.h"
-
-int main() {
-return __MINGW32__;
-; return 0; }
 configure:2050: checking for ld used by GCC
 configure:2118: checking if the linker (/usr/i386-linux/bin/ld) is GNU ld
-GNU ld version 2.10.91 (with BFD 2.10.1.0.4)
 configure:2135: checking for /usr/i386-linux/bin/ld option to reload object files
 configure:2147: checking for BSD-compatible nm
 configure:2183: checking whether ln -s works
 configure:2204: checking how to recognise dependant libraries
 configure:2314: checking for object suffix
-configure:2320: gcc -c -O0 -g3 -Wall  conftest.c 1>&5
 configure:2340: checking for executable suffix
-configure:2350: gcc -o conftest -O0 -g3 -Wall    conftest.c  1>&5
 configure:2520: checking for ranlib
 configure:2587: checking for strip
 ltconfig:563:checking for g++ option to produce PIC
-ltconfig:693:checking that g++ PIC flag -fPIC works.
-ltconfig:702: g++ -c -O0 -g3 -Wall -fPIC -DPIC  conftest.c 1>&5
+ltconfig:693:checking that g++ PIC flag  -fPIC works.
 ltconfig:754: checking if g++ static flag -static works
-ltconfig:762: g++ -o conftest -O0 -g3 -Wall    -static conftest.c  1>&5
-conftest.c:1: warning: ANSI C++ forbids declaration `main' with no type
 ltconfig:799: checking if g++ supports -c -o file.o
-ltconfig:800: g++ -c -O0 -g3 -Wall -o out/conftest2.o  conftest.c 1>&5
+ltconfig:800: g++ -c  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT  -o out/conftest2.o  conftest.c 1>&5
 ltconfig:832: checking if g++ supports -c -o file.lo
-ltconfig:833: g++ -c -O0 -g3 -Wall -c -o conftest.lo  conftest.c 1>&5
+ltconfig:833: g++ -c  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT  -c -o conftest.lo  conftest.c 1>&5
 ltconfig:884: checking if g++ supports -fno-rtti -fno-exceptions
-ltconfig:885: g++ -c -O0 -g3 -Wall -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
+ltconfig:885: g++ -c  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT  -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
 ltconfig:1867: checking if global_symbol_pipe works
-ltconfig:1868: g++ -c -O0 -g3 -Wall  conftest.c 1>&5
+ltconfig:1868: g++ -c  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT   conftest.c 1>&5
 conftest.c:9: warning: ANSI C++ forbids declaration `main' with no type
 ltconfig:1871: eval "/usr/bin/nm -B conftest.o | sed -n -e 's/^.*[ 	]\([ABCDGISTW]\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2\3 \3/p' > conftest.nm"
-ltconfig:1923: g++ -o conftest -O0 -g3 -Wall -fno-builtin -fno-rtti -fno-exceptions    conftest.c conftstm.o 1>&5
-ltconfig:2032: checking for dlopen in -ldl
-ltconfig:2052: g++ -o conftest -O0 -g3 -Wall -fno-builtin -fno-rtti -fno-exceptions    conftest.c -ldl   1>&5
+ltconfig:1923: g++ -o conftest  -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT  -fno-builtin -fno-rtti -fno-exceptions    -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread  conftest.c conftstm.o 1>&5
 ltconfig:2269: checking for dlfcn.h
-ltconfig:2279: g++ -c -O0 -g3 -Wall -fno-builtin -fno-rtti -fno-exceptions  conftest.c 1>&5 >/dev/null 2>conftest.out
 ltconfig:2307: checking whether a program can dlopen itself
-ltconfig:2361: g++ -o conftest -O0 -g3 -Wall -fno-builtin -fno-rtti -fno-exceptions  -DHAVE_DLFCN_H   -Wl,--export-dynamic conftest.c -ldl  1>&5
-ltconfig:2354: ANSI C++ forbids declaration `fnord' with no type
-ltconfig: In function `int fnord()':
-ltconfig:2354: warning: unused variable `int i'
-ltconfig:2354: warning: control reaches end of non-void function `fnord()'
-ltconfig: At top level:
-ltconfig:2355: warning: ANSI C++ forbids declaration `main' with no type
-ltconfig: In function `int main()':
-ltconfig:2357: implicit declaration of function `int exit(...)'
-ltconfig: failed program was:
-#line 2315 "ltconfig"
-
-#if HAVE_DLFCN_H
-#include <dlfcn.h>
-#endif
-
-#include <stdio.h>
-
-#ifdef RTLD_GLOBAL
-# define LTDL_GLOBAL	RTLD_GLOBAL
-#else
-# ifdef DL_GLOBAL
-#  define LTDL_GLOBAL	DL_GLOBAL
-# else
-#  define LTDL_GLOBAL	0
-# endif
-#endif
-
-/* We may have to define LTDL_LAZY_OR_NOW in the command line if we
-   find out it does not work in some platform. */
-#ifndef LTDL_LAZY_OR_NOW
-# ifdef RTLD_LAZY
-#  define LTDL_LAZY_OR_NOW	RTLD_LAZY
-# else
-#  ifdef DL_LAZY
-#   define LTDL_LAZY_OR_NOW	DL_LAZY
-#  else
-#   ifdef RTLD_NOW
-#    define LTDL_LAZY_OR_NOW	RTLD_NOW
-#   else
-#    ifdef DL_NOW
-#     define LTDL_LAZY_OR_NOW	DL_NOW
-#    else
-#     define LTDL_LAZY_OR_NOW	0
-#    endif
-#   endif
-#  endif
-# endif
-#endif
-
-fnord() { int i=42;}
-main() { void *self, *ptr1, *ptr2; self=dlopen(0,LTDL_GLOBAL|LTDL_LAZY_OR_NOW);
-    if(self) { ptr1=dlsym(self,"fnord"); ptr2=dlsym(self,"_fnord");
-	       if(ptr1 || ptr2) { dlclose(self); exit(0); } } exit(1); }
-
 configure:2875: checking for dlopen in -ldl
 configure:2919: checking for shl_unload in -ldld
-configure:2938: gcc -o conftest -O0 -g3 -Wall    conftest.c -ldld   1>&5
-/usr/i386-linux/bin/ld: cannot find -ldld
-configure: failed program was:
-#line 2927 "configure"
-#include "confdefs.h"
-/* Override any gcc2 internal prototype to avoid an error.  */
-/* We use char because int might match the return type of a gcc2
-    builtin and then its argument prototype would still apply.  */
-char shl_unload();
-
-int main() {
-shl_unload()
-; return 0; }
 configure:2979: checking for extra includes
 configure:3010: checking for extra libs
