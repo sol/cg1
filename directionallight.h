@@ -18,10 +18,12 @@
 
 
 
+namespace Lights {
 class DirectionalLight : public Light {
 public:
     DirectionalLight(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
+}
 
 
 

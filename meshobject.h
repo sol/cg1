@@ -21,6 +21,8 @@
 #include "transformation.h"
 #include "worldobject.h"
 
+namespace MeshObjects {
+
 class MeshObject : public WorldObject {
 private:
     virtual void DefineObject();
@@ -38,6 +40,6 @@ public:
     void SetMaterial(GLfloat red, GLfloat green, GLfloat blue);
 };
 
-
+}
 
 #endif

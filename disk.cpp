@@ -15,6 +15,7 @@
 
 #include "disk.h"
 
+namespace MeshObjects {
 Disk::Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices, GLint Loops, GLenum Style){
     GLuint list = glGenLists(1);
     glNewList(list, GL_COMPILE);
@@ -34,4 +35,5 @@ Disk::Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices, GLint Loops
 
 Disk::~Disk(){
     
+}
 }

@@ -17,10 +17,10 @@
 #include "world.h"
 
 #include "worldobject.h"
+#include "transformations.h"
 
 class OpenGLContext;
 class Scene;
-class Transformation;
 
 
 //!!! camera does not work as subobject !!!

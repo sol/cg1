@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   animatedtranslation.h - (c) 2003 by The Marrowmoon Group                        //
+//   animatedtranslation.h - (c) 2003 by The Marrowmoon Group               //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -15,9 +15,10 @@
 
 #include "world.h"
 
-#include "translation.h"
+#include "transformations.h"
 #include "animatedobject.h"
 
+namespace Transformations {
 
 class AnimatedTranslation : public Translation, public AnimatedObject  {
 private:
@@ -41,5 +42,5 @@ public:
 	~AnimatedTranslation();
     int Animate();
 };
-
+}
 #endif

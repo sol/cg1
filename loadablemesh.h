@@ -6,11 +6,12 @@
 
 
 
+namespace MeshObjects {
 
 class LoadableMesh : public MeshObject
 {
 public:
     void LoadFromFile( const char * filename );
 };
-
+}
 #endif // LOADABLEMESH_H

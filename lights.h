@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   translation.h - (c) 2003 by The Marrowmoon Group                       //
+//   lights.h - (c) 2003 by The Marrowmoon Group                            //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,29 +11,15 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef TRANSLATION_H
-#define TRANSLATION_H
+#ifndef LIGHTS_H
+#define LIGHTS_H
 
-#include "world.h"
-#include "transformation.h"
+#include "light.h"
+#include "pointlight.h"
+#include "spotlight.h"
+#include "directionallight.h"
 
-namespace Transformations {
-
-
-class Translation : public Transformation {
-protected:
-    //This values define a vector used for translating
-    GLfloat m_X;
-    GLfloat m_Y;
-    GLfloat m_Z;
-
-public:
-    Translation(GLfloat X, GLfloat Y, GLfloat Z) : m_X(X), m_Y(Y), m_Z(Z) {}
-    ~Translation(){}
-    void Apply() { glTranslatef( m_X, m_Y, m_Z ); }
-    void InverseApply() { glTranslatef( -m_X, -m_Y, -m_Z ); }
-};
-}
+using namespace Lights;
 
 
 #endif

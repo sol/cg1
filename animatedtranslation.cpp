@@ -14,8 +14,8 @@
 
 #include "animatedtranslation.h"
 
-//
-
+namespace Transformations {
+    
 AnimatedTranslation::AnimatedTranslation(GLfloat startX, GLfloat startY, GLfloat startZ,
         GLfloat endX, GLfloat endY, GLfloat endZ,
         double Step, double StartFactor)
@@ -34,4 +34,4 @@ int AnimatedTranslation::Animate(){
     m_Z = m_startZ + m_endZ * m_Factor;
     return 1; 
 }
-    
+}    

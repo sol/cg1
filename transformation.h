@@ -14,17 +14,17 @@
 #ifndef TRANSFORMATION_H
 #define TRANSFORMATION_H
 
-
+namespace Transformations {
 
 class Transformation {
 public:
+     virtual ~Transformation() {}
 
-     virtual ~Transformation(){}
-    
      virtual void Apply(  ) = 0;
      virtual void InverseApply() = 0;
 };
 
+}
 
 
 #endif

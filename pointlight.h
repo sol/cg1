@@ -18,11 +18,12 @@
 
 
 
+namespace Lights {
 class PointLight : public Light {
 public:
     PointLight(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
-
+}
 
 
 #endif

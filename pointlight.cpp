@@ -14,9 +14,11 @@
 
 
 
+namespace Lights {
 PointLight::PointLight(GLfloat red, GLfloat green, GLfloat blue) : Light(red, green, blue)  {
     if(m_IsValid) {
         m_aPosition[0] = 0.0; m_aPosition[1] = 0.0; m_aPosition[2] = 0.0; m_aPosition[3] = 1.0;
         m_SpotCutoff = 180.0;
     }
+}
 }

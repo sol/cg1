@@ -17,10 +17,11 @@
 #include "world.h"
 #include "meshobject.h"
 
+namespace MeshObjects {
 class Disk : public MeshObject  {
 public: 
 	Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices=20, GLint Loops=10, GLenum Style = GLU_FILL);
 	~Disk();
 };
-
+}
 #endif

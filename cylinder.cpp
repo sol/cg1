@@ -16,6 +16,7 @@
 #include "cylinder.h"
 #include "disk.h"
 
+namespace MeshObjects {
 Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
             GLint Slices, GLint Stacks, GLenum Style){
     GLuint list = glGenLists(1);
@@ -42,4 +43,5 @@ Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
 
 }
 Cylinder::~Cylinder(){
+}
 }

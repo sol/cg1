@@ -17,10 +17,11 @@
 #include <meshobject.h>
 
 
+namespace MeshObjects {
 class Grid : public MeshObject  {
 public: 
 	Grid(GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth);
 	~Grid();
 };
-
+}
 #endif

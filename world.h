@@ -19,8 +19,9 @@
 #include <GL/glu.h>
 #include <vector>
 
-#include "scene.h"
+//#include "scene.h"
 
+class Scene;
 
 
 class World {

@@ -4,6 +4,7 @@
 
 #include "meshobject.h"
 
+namespace MeshObjects {
 class Cube : public MeshObject
 {
 
@@ -13,5 +14,5 @@ public:
 
 
 };
-
+}
 #endif // CUBE_H

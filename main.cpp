@@ -13,23 +13,14 @@
 
 #include "world.h"
 
+#include "scene.h"
 #include "camera.h"
-#include "gllist.h"
-#include "meshobject.h"
-#include "cube.h"
-#include "sphere.h"
-#include "translation.h"
-#include "animatedrotation.h"
 #include "animationcontroller.h"
-#include "cylinder.h"
-#include "disk.h"
-#include "grid.h"
-#include "light.h"
-#include "scaling.h"
-#include "spotlight.h"
-#include "pointlight.h"
-#include "directionallight.h"
-#include "animatedtranslation.h"
+
+#include "meshobjects.h"
+#include "lights.h"
+#include "transformations.h"
+
 
 
 int TOGGLE_PAUSE = SDLK_SPACE;

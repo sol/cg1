@@ -18,6 +18,7 @@
 #include "transformation.h"
 
 
+namespace Transformations {
 
 class Rotation : public Transformation {
 protected:
@@ -33,7 +34,7 @@ public:
     void Apply() { glRotatef( m_Angle, m_X, m_Y, m_Z ); }
     void InverseApply(){ glRotatef( -m_Angle, m_X, m_Y, m_Z ); }
 };
-
+}
 
 
 #endif

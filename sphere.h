@@ -5,6 +5,7 @@
 #include "world.h"
 #include "meshobject.h"
 
+namespace MeshObjects {
 class Sphere : public MeshObject
 {
 
@@ -14,5 +15,5 @@ public:
     ~Sphere();
 
 };
-
+}
 #endif // SPHERE_H

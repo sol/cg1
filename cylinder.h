@@ -19,11 +19,12 @@
 #include "meshobject.h"
 
 
+namespace MeshObjects {
 class Cylinder : public MeshObject  {
 public: 
 	Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
         GLint Slices=20, GLint Stacks=20, GLenum Style = GLU_FILL);
 	~Cylinder();
 };
-
+}
 #endif

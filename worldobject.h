@@ -15,11 +15,12 @@
 #ifndef WORLDOBJECT_H
 #define WORLDOBJECT_H
 
-#include "transformation.h"
-#include <vector>
-#include "rotation.h"
-#include "translation.h"
-#include "scaling.h"
+
+#include "world.h"
+#include "transformations.h"
+//class Translation;
+//class Rotation;
+//class Scaling;
 
 class WorldObject
 {

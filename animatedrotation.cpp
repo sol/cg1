@@ -13,6 +13,8 @@
 
 
 #include "animatedrotation.h"
+namespace Transformations {
+
 
 AnimatedRotation::AnimatedRotation(GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z, GLdouble DeltaAngle) : Rotation(Angle, X, Y, Z), m_DeltaAngle( DeltaAngle ) {
     //do nut'n    
@@ -24,4 +26,5 @@ int AnimatedRotation::Animate(){
         m_Angle -= 360;
 
     return 1;
+}
 }

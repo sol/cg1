@@ -14,6 +14,7 @@
 #include "meshobject.h"
 
 
+namespace MeshObjects {
 MeshObject::MeshObject() {
     m_pGLList = NULL;
     m_pMaterial = NULL;
@@ -48,4 +49,4 @@ void MeshObject::SetMaterial(GLfloat red, GLfloat green, GLfloat blue) {
 
     m_pMaterial = new Material(red, green, blue);
 }
-
+}

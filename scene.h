@@ -16,9 +16,9 @@
 
 #include <vector>
 #include "animationcontroller.h"
+#include "lights.h"
 
 class WorldObject;
-class Light;
 class Camera;
 
 

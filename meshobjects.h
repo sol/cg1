@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   translation.h - (c) 2003 by The Marrowmoon Group                       //
+//   meshobjects.h - (c) 2003 by The Marrowmoon Group                       //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,29 +11,17 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef TRANSLATION_H
-#define TRANSLATION_H
+#ifndef MESHOBJECTS_H
+#define MESHOBJECTS_H
 
-#include "world.h"
-#include "transformation.h"
+#include "disk.h"
+#include "grid.h"
+#include "meshobject.h"
+#include "cube.h"
+#include "sphere.h"
+#include "cylinder.h"
 
-namespace Transformations {
 
-
-class Translation : public Transformation {
-protected:
-    //This values define a vector used for translating
-    GLfloat m_X;
-    GLfloat m_Y;
-    GLfloat m_Z;
-
-public:
-    Translation(GLfloat X, GLfloat Y, GLfloat Z) : m_X(X), m_Y(Y), m_Z(Z) {}
-    ~Translation(){}
-    void Apply() { glTranslatef( m_X, m_Y, m_Z ); }
-    void InverseApply() { glTranslatef( -m_X, -m_Y, -m_Z ); }
-};
-}
-
+using namespace MeshObjects;
 
 #endif
