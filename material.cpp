@@ -96,3 +96,12 @@ void Material::SetShininess(GLfloat R, GLfloat G, GLfloat B, GLfloat A ){
     
 }
 
+
+void Material::SetColor(GLfloat R, GLfloat G, GLfloat B ){
+    SetDiffuse(R, G, B, 1);
+    SetAmbient(R, G, B, 1);
+    SetEmission(R, G, B, 1);
+    SetShininess(R, G, B, 1);
+    SetSpecular(R, G, B, 1);
+}
+

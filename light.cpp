@@ -29,7 +29,7 @@ Light::Light() {
         Enable();
 
         //Set Light
-        Color _Color(1, 1, 1, 0);
+        Color _Color(1, 1, 1, 1);
         SetAllColors(_Color);
 
 

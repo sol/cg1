@@ -12,6 +12,8 @@ public:
     Material();
     ~Material();
 
+    void SetColor( GLfloat R, GLfloat G, GLfloat B );
+
     //setters...
     void SetAmbient(GLfloat R, GLfloat G, GLfloat B, GLfloat A );
     void SetDiffuse(GLfloat R, GLfloat G, GLfloat B, GLfloat A );

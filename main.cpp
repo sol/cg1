@@ -97,11 +97,12 @@ int main(int argc, char** argv) {
     
     
     Material NormalMat;
-    NormalMat.SetEmission(.2, .2, .3, 0);
-    NormalMat.SetAmbient(0, 0, 0, 0);
-    NormalMat.SetDiffuse(0, 0, 0, 0);
-    NormalMat.SetShininess(0, 0, 0, 0);
-    NormalMat.SetSpecular(.2, .5, .3, 0);
+//    NormalMat.SetEmission(.2, .2, .3, 0);
+//    NormalMat.SetAmbient(0, 0, 0, 0);
+//    NormalMat.SetDiffuse(0, 0, 0, 0);
+//    NormalMat.SetShininess(0, 0, 0, 0);
+//    NormalMat.SetSpecular(.2, .5, .3, 0);
+    NormalMat.SetColor(.2, .2, .3);
     Sphere MySphere( 5, 80, 80, GLU_FILL );
     MyScene.AddWorldObject( &MySphere );
     MySphere.SetMaterial( &NormalMat );
