@@ -208,7 +208,7 @@ Scene* Scene2(){
     Camera *MyCamera = new Camera;
 
     MyScene->SetCamera( MyCamera );
-    MyCamera->AddTranslation( 0, 0, 6 );
+    MyCamera->AddTranslation( 0, 0, 1.5 );
 //    MyCamera->AddRotation(-30, 1, 0, 0);
 
     Grid *grid = new Grid(100, 100, 100, 100);
@@ -216,29 +216,31 @@ Scene* Scene2(){
     grid->AddTranslation(0, -.5, 0);
     grid->SetMaterial(.1, .1, .1);
     MyScene->AddWorldObject( grid );
+
+    double speed = 0.001;
     
-    OscillatingRotation *WalkUpper1 = new OscillatingRotation(-60, 60, .01, 1, 0, 0, 0, OSCIL_SINUS);
-    OscillatingRotation *WalkLower1 = new OscillatingRotation(0, 90, .01, 1, 0, 0, 0, OSCIL_SINUS);
+    OscillatingRotation *WalkUpper1 = new OscillatingRotation(-60, 60, speed, 1, 0, 0, 0, OSCIL_SINUS);
+    OscillatingRotation *WalkLower1 = new OscillatingRotation(0, 90, speed, 1, 0, 0, 0.75, OSCIL_SINUS);
     MyScene->GetAnimationController()->AddObject( WalkUpper1 );
     MyScene->GetAnimationController()->AddObject( WalkLower1 );
    
-    OscillatingRotation *WalkUpper2 = new OscillatingRotation(-60, 60, .01, 1, 0, 0, .5, OSCIL_SINUS);
-    OscillatingRotation *WalkLower2 = new OscillatingRotation(0, 90, .01, 1, 0, 0, .5, OSCIL_SINUS);
+    OscillatingRotation *WalkUpper2 = new OscillatingRotation(-60, 60, speed, 1, 0, 0, .5, OSCIL_SINUS);
+    OscillatingRotation *WalkLower2 = new OscillatingRotation(0, 90, speed, 1, 0, 0, 0.25, OSCIL_SINUS);
     MyScene->GetAnimationController()->AddObject( WalkUpper2 );
     MyScene->GetAnimationController()->AddObject( WalkLower2 );
 
-    OscillatingRotation *WalkArm1 = new OscillatingRotation( -60, 100, .01, 1, 0, 0, 0.5, OSCIL_SINUS);
+    OscillatingRotation *WalkArm1 = new OscillatingRotation( -60, 100, speed, 1, 0, 0, 0.5, OSCIL_SINUS);
     MyScene->GetAnimationController()->AddObject( WalkArm1 );
-    OscillatingRotation *WalkArm2 = new OscillatingRotation( -60, 100, .01, 1, 0, 0, 0, OSCIL_SINUS);
+    OscillatingRotation *WalkArm2 = new OscillatingRotation( -60, 100, speed, 1, 0, 0, 0, OSCIL_SINUS);
     MyScene->GetAnimationController()->AddObject( WalkArm2 );
 
-    OscillatingRotation *WalkTorso = new OscillatingRotation( -10, 10, .01, 0, 1, 0, 0.5, OSCIL_SINUS);
+    OscillatingRotation *WalkTorso = new OscillatingRotation( -10, 10, speed, 0, 1, 0, 0.5, OSCIL_SINUS);
     MyScene->GetAnimationController()->AddObject( WalkTorso );
 
 //    AnimatedTranslation *Walk = new AnimatedTranslation(-7, 0, -5, 10, 0, 6, .05, 0);
 //    MyScene->GetAnimationController()->AddObject( Walk );
     AnimatedRotation* circle = new AnimatedRotation( 0, 0, 1, 0, .6 );
-    AnimatedRotation *rot1 = new AnimatedRotation(0, 0, -1, 0, 1);
+    AnimatedRotation *rot1 = new AnimatedRotation(0, 0, 1, 0, .1);
     MyScene->GetAnimationController()->AddObject( circle );
     MyScene->GetAnimationController()->AddObject( rot1 );
 
@@ -246,20 +248,24 @@ Scene* Scene2(){
     Cube *Torso = new Cube(.22, .35, .1);
     Torso->AddTranslation(-.11, -.175, -.05);
     Torso->SetMaterial(.1, .3 , .1);
-//    Torso->AddRotation(60, 0, 1, 0);
+//        Torso->AddTransformation( rot1 );
+    Torso->AddRotation(60, 0, 1, 0);
     Torso->AddTransformation( WalkTorso );
-//    Torso->AddTransformation( rot1 );
-    Torso->AddTranslation(-3, 0, 0);
-    Torso->AddTransformation( circle );
+    Torso->AddTransformation( rot1 );
+//    Torso->AddTranslation(-3, 0, 0);
+//    Torso->AddTransformation( circle );
+
+    GLint detail = 50;
 
     //Head
-    Sphere *Head = new Sphere(.11);
+    Sphere *Head = new Sphere(.11, detail, detail);
     Head->AddTranslation(.1, .5, .05);
     Torso->AddSubObject( Head );
     Head->SetMaterial(.3, .2, .2);
+    Head->GetMaterial()->SetShininess(100);
 
     //Left Arm
-    Cylinder* LUpperArm = new Cylinder(.05, .05, .2 );
+    Cylinder* LUpperArm = new Cylinder(.05, .05, .2, detail, detail );
     Torso->AddSubObject( LUpperArm );
     LUpperArm->AddRotation( 90, 0, 1, 0 );
     LUpperArm->AddTranslation( -.2, 0, 0 );
@@ -269,7 +275,7 @@ Scene* Scene2(){
     LUpperArm->AddTransformation( WalkArm1 );
 
     LUpperArm->AddTranslation( -.02, .30, .05 );
-    Cylinder* LLowerArm = new Cylinder( .05, .05, .2 );
+    Cylinder* LLowerArm = new Cylinder( .05, .05, .2, detail, detail );
     LLowerArm->AddTranslation( 0, 0, -.22 );
     //AddCustomRotations!
     LLowerArm->AddRotation(90, 0, 1, 0);
@@ -277,7 +283,8 @@ Scene* Scene2(){
     LUpperArm->AddSubObject( LLowerArm );
 
     //Right Arm
-    Cylinder* RUpperArm = new Cylinder(.05, .05, .2 );
+    Cylinder* RUpperArm = new Cylinder(.05, .05, .2, detail, detail );
+    RUpperArm->SetMaterial(.1, .3, .1);
     Torso->AddSubObject( RUpperArm );
     RUpperArm->AddRotation( 90, 0, 1, 0 );
     //Add Custom Rotations!!
@@ -285,7 +292,7 @@ Scene* Scene2(){
     RUpperArm->AddTransformation( WalkArm2 );
 
     RUpperArm->AddTranslation( .24, .30, .05 );
-    Cylinder* RLowerArm = new Cylinder( .05, .05, .2 );
+    Cylinder* RLowerArm = new Cylinder( .05, .05, .2, detail, detail );
     //AddCustomRotations!
     RLowerArm->AddRotation(-90, 0, 1, 0);
 
@@ -293,7 +300,7 @@ Scene* Scene2(){
     RUpperArm->AddSubObject( RLowerArm );
 
     //Left Leg
-    Cylinder *LUpperLeg = new Cylinder(.05, .05, .2);
+    Cylinder *LUpperLeg = new Cylinder(.05, .05, .2, detail, detail);
     LUpperLeg->AddRotation(90, 1, 0, 0);
     LUpperLeg->SetMaterial(.1, .1, .3);
     Torso->AddSubObject( LUpperLeg );
@@ -301,7 +308,7 @@ Scene* Scene2(){
     LUpperLeg->AddTransformation( WalkUpper1 );
 
     LUpperLeg->AddTranslation(.05, -.01, .05);
-    Cylinder *LLowerLeg = new Cylinder(.05, .05, .2);
+    Cylinder *LLowerLeg = new Cylinder(.05, .05, .2, detail, detail);
     //Custom Rotations
     LLowerLeg->AddTransformation( WalkLower1 );
 
@@ -309,7 +316,7 @@ Scene* Scene2(){
     LUpperLeg->AddSubObject( LLowerLeg );
 
     //Right Leg
-    Cylinder *RUpperLeg = new Cylinder( .05, .05, .2 );
+    Cylinder *RUpperLeg = new Cylinder( .05, .05, .2, detail, detail );
     Torso->AddSubObject( RUpperLeg );
     RUpperLeg->AddRotation( 90, 1, 0, 0 );
     //Custom Rotations
@@ -317,17 +324,21 @@ Scene* Scene2(){
 
     RUpperLeg->AddTranslation( .17, -.01, .05 );
 
-    Cylinder *RLowerLeg = new Cylinder( .05, .05, .2 );
+    Cylinder *RLowerLeg = new Cylinder( .05, .05, .2, detail, detail );
     RUpperLeg->AddSubObject( RLowerLeg );
     //Custom Rotations
     RLowerLeg->AddTransformation( WalkLower2 );
 
     RLowerLeg->AddTranslation( 0, 0, .21 );
 
+    Sphere *lightbulb = new Sphere(.02);
+    lightbulb->SetMaterial(1, 1, 1);
     Light *light1 = new PointLight;
-    light1->AddTranslation(-7, 7, 7);
+    light1->AddTranslation(0, 0, -.1);
 
-    MyScene->AddWorldObject( light1 );
+    LLowerArm->AddSubObject( light1 );
+    light1->AddSubObject( lightbulb );
+//    MyScene->AddWorldObject( light1 );
     MyScene->AddWorldObject( Torso );
     
 

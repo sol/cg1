@@ -31,7 +31,7 @@ protected:
 public:
     Material(GLfloat red = 0.2, GLfloat green = 0.2, GLfloat blue = 0.2) {SetColor(red, green, blue);}
     virtual ~Material() {}
-
+    void SetShininess( GLfloat Shininess ){ m_Shininess = Shininess; }
     virtual void SetColor(GLfloat red, GLfloat green, GLfloat blue);
     void Apply();
 };
