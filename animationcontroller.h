@@ -24,7 +24,6 @@ class AnimationController//: public Controller
 {
 private:
     std::vector<AnimatedObject*> m_AnimatedObjects;
-    int m_iObjectCount;
     Uint32 m_u32InternalTime;
     int m_iPause;
     
@@ -38,6 +37,7 @@ public:
     int TogglePause();
     int OneStep();
     void AddObject(AnimatedObject* ObjectToAdd);
+    void DeleteAllObjects();
 
     Uint32 GetInternalTime() {return m_u32InternalTime;}
 };

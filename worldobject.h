@@ -40,7 +40,6 @@ public:
     void AddScaling( GLfloat X, GLfloat Y, GLfloat Z ){ AddTransform( new Scaling( X, Y, Z )); }
     virtual ~WorldObject();
     void AddSubObject(WorldObject* pObject)           {m_SubObjects.push_back(pObject);}
-
 };
 
 #endif // WORLDOBJECT_H

@@ -67,7 +67,7 @@ Camera::Camera() {
     glEnable(GL_RENDER);
     glEnable(GL_LIGHTING);
 
-    glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, 1);
+    glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, 0);
  
     gluPerspective(60.0, ratio, 1.0, 1024.0);
 }

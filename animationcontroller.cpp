@@ -17,7 +17,6 @@
 
 AnimationController::AnimationController()
 {
-    m_iObjectCount = 0;
     m_u32InternalTime = SDL_GetTicks();
     m_iPause = 0;
 }
@@ -74,4 +73,12 @@ int AnimationController::TogglePause(){
         return Pause();
 }
 
+void AnimationController::DeleteAllObjects(){
+    std::vector<AnimatedObject*>::iterator it;
+
+    for (it = m_AnimatedObjects.begin(); it < m_AnimatedObjects.end(); it++)
+        delete *it;
+
+    m_AnimatedObjects.clear();
+}
 

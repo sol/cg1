@@ -14,6 +14,7 @@
 #include "world.h"
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <stdlib.h>
 #include "camera.h"
 #include "gllist.h"
 #include "meshobject.h"
@@ -65,9 +66,9 @@ int process_events(void) {
     return 0;
 }
 
-  
-
-
+#define XX 50
+#define YY 50
+#define ZZ 50
 
 int main(int argc, char** argv) {
 
@@ -79,67 +80,33 @@ int main(int argc, char** argv) {
     MyWorld.AddScene(&MyScene);
 
     AnimationController MyAnimationController;
+    MyCamera.AddTranslation(1, 1, 10);
 
-    AnimatedRotation AniRot( 0, 0, 1, 0, 1 );
-    AnimatedRotation AniRot2( 0, 1, 0, 0, -1 );
-    
-    AnimatedTranslation AniTransZ(0, 0, 1);
-    MyAnimationController.AddObject( &AniTransZ );
-    MyAnimationController.AddObject( &AniRot );
-    MyAnimationController.AddObject( &AniRot2 );
-    
-//    MyCamera.AddTransform( &AniRot );
-    MyCamera.AddTranslation(0, 0, 40);
-//    MyCamera.AddRotation(45, 1, 0, 0 );
-    MyCamera.AddRotation( -20, 1, 0, 0 );
-//    MyCamera.AddTransform( &AniRot2 );
-//    MyCamera.AddTransform( &AniTransZ );
-    
-    
-    Material NormalMat;
-//    NormalMat.SetEmission(.2, .2, .3, 0);
-//    NormalMat.SetAmbient(0, 0, 0, 0);
-//    NormalMat.SetDiffuse(0, 0, 0, 0);
-//    NormalMat.SetShininess(0, 0, 0, 0);
-//    NormalMat.SetSpecular(.2, .5, .3, 0);
-    NormalMat.SetColor(.2, .2, .3);
-    Sphere MySphere( 5, 80, 80, GLU_FILL );
-    MyScene.AddWorldObject( &MySphere );
-    MySphere.SetMaterial( &NormalMat );
-    
-//    MySphere.AddTransform( &AniRot );
-//    MySphere.AddTranslation(0, 0, -10);
-    Grid MyGrid(100, 100, 200, 200);
-    MyGrid.AddRotation(90, 1, 0, 0);
-    MyGrid.AddTranslation(0, -6, 0);
-    MyScene.AddWorldObject( &MyGrid );
-    MyGrid.SetMaterial( &NormalMat );
+    Grid grid(500, 500, 100, 100);
+    grid.AddRotation(90, 1, 0, 0);
+    MyScene.AddWorldObject( &grid );
 
-
-    Material LBMat;
-    LBMat.SetEmission(1, 1, 1, 1);
-    
-    Sphere Sphere2( 4, 80, 80, GLU_FILL );
-    Sphere2.AddTranslation(0, 0, -10);
-    Sphere2.SetMaterial( &NormalMat );
-    Sphere2.AddTransform( &AniRot );
-    MyScene.AddWorldObject( &Sphere2 );
-        
-    Disk Disk1( 5, 6, 20, 3, GLU_LINE );
-    MySphere.AddSubObject( &Disk1 );
-
-    Sphere LightBulb(.5, 10, 10, GLU_FILL );
-    LightBulb.SetMaterial( &LBMat );
-
-//    PointLight MySpot;
-    SpotLight MySpot(30);
-    MySpot.AddSubObject( &LightBulb );
-    MySphere.AddSubObject( &MySpot );
-    MySpot.AddTranslation(0, 0, 20);
-    MySpot.AddTransform( &AniRot );  
-//	MySpot.AddRotation(5, 1, 0, 0);
-
-
+//    SpotLight light1(30);
+    PointLight light1;
+    Material *mat;
+//    mat.SetColor(.2, .2, .3);
+    Sphere* sph1;
+    AnimatedRotation *aniRot;
+    srand(49839775);
+    for( int i = 0; i < 30; i++ ){
+//        sph1 = new Cube( .4, .4, .4, GL_TRIANGLES );
+        sph1 = new Sphere( 2, 30, 30, GLU_FILL );
+        sph1->AddTranslation( rand()%XX / 10, rand()%YY / 10, rand()%ZZ / 10 );
+        mat = new Material;
+        mat->SetColor(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0);
+        sph1->SetMaterial( mat );
+        aniRot = new AnimatedRotation( rand() % 360, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand() % 10 / 10.0)+.1 );
+        sph1->AddTransform( aniRot );
+        MyAnimationController.AddObject( aniRot );
+        MyScene.AddWorldObject( sph1 );
+        if( i == 0 )
+            sph1->AddSubObject( &light1 );
+    }
     while(1)
     {
         MyAnimationController.Animate();
