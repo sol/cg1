@@ -23,14 +23,15 @@ Grid::Grid( GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth
 
     glBegin( GL_LINES );
     glNormal3d(0, 0, -1);
-    for( GLint i = 0; i <= StepsHeight; i++ )
+	GLint i;
+    for( i = 0; i <= StepsHeight; i++ )
         for( GLint w = 0; w < StepsWidth; w++ ){
             glVertex3d( (w*Width/StepsWidth)-(Width/2.0), (Height / StepsHeight * i) - (Height / 2), 0);
             glVertex3d( ((w+1)*Width/StepsWidth)-(Width/2.0), (Height / StepsHeight * i) - (Height / 2), 0);
     }
     
 
-    for( GLint i = 0; i <= StepsWidth; i++ )
+    for( i = 0; i <= StepsWidth; i++ )
         for( GLint w = 0; w < StepsHeight; w++ ){
             glVertex3d( (Width / StepsWidth * i) - (Width / 2), (w*Height/StepsHeight)-(Height/2.0), 0);
             glVertex3d( (Width / StepsWidth * i) - (Width / 2), ((w+1)*Height/StepsHeight)-(Height/2.0), 0);

@@ -14,6 +14,7 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include <windows.h> //for windows compatibility there is a dummy windows.h used by other os'es
 #include <SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
