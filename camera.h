@@ -14,10 +14,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "world.h"
-
 #include "worldobject.h"
-#include "transformations.h"
+
 
 class OpenGLContext;
 class Scene;

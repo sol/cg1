@@ -15,10 +15,12 @@
 #define ANIMATEDROTATION_H
 
 #include "world.h"
-
 #include "rotation.h"
 #include "animatedobject.h"
+
+
 namespace Transformations {
+    
 
 class AnimatedRotation : public Rotation, public AnimatedObject {
 private:
@@ -29,5 +31,8 @@ public:
     int Animate();
 
 };
+
+
 }
-#endif // ANIMATEDROTATION_H
+
+#endif

@@ -14,12 +14,13 @@
 #ifndef MESHOBJECTS_H
 #define MESHOBJECTS_H
 
-#include "disk.h"
-#include "grid.h"
 #include "meshobject.h"
 #include "cube.h"
-#include "sphere.h"
 #include "cylinder.h"
+#include "disk.h"
+#include "grid.h"
+#include "sphere.h"
+#include "loadablemesh.h"
 
 
 using namespace MeshObjects;

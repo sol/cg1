@@ -16,13 +16,17 @@
 
 #include "light.h"
 
+
 namespace Lights {
 
+
+//this class provides Light with a constructor appropriate for spot lights
 class SpotLight : public Light {
 public:
     SpotLight(GLfloat Angle = 30, GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
-}
 
+
+}
 
 #endif

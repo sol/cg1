@@ -15,6 +15,8 @@
 
 
 namespace MeshObjects {
+
+
 MeshObject::MeshObject() {
     m_pGLList = NULL;
     m_pMaterial = NULL;
@@ -35,7 +37,6 @@ void MeshObject::DefineObject() {
     //apply material
     if( m_pMaterial )
         m_pMaterial->Apply();
-    //PROV
 
     //send the mesh to the pipeline
     if (m_pGLList)
@@ -49,4 +50,6 @@ void MeshObject::SetMaterial(GLfloat red, GLfloat green, GLfloat blue) {
 
     m_pMaterial = new Material(red, green, blue);
 }
+
+
 }

@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   cylinder.h - (c) 2003 by The Marrowmoon Group                        //
+//   cylinder.h - (c) 2003 by The Marrowmoon Group                          //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -14,17 +14,19 @@
 #ifndef CYLINDER_H
 #define CYLINDER_H
 
-#include "world.h"
-
 #include "meshobject.h"
 
 
 namespace MeshObjects {
+
+
+//this class provides MeshObject with a constructor appropriate for cylinders
 class Cylinder : public MeshObject  {
 public: 
-	Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
-        GLint Slices=20, GLint Stacks=20, GLenum Style = GLU_FILL);
-	~Cylinder();
+    Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height, GLint Slices=20, GLint Stacks=20, GLenum Style = GLU_FILL);
 };
+
+
 }
+
 #endif

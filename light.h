@@ -14,18 +14,21 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 
-#include "world.h"
 #include "worldobject.h"
+
 
 namespace Lights {
 
+
+//This is the base class of all lights, mapping the internal lights of the
+//OpenGL (GL_LIGHT0, GL_LIGHT1, ...) to Objects. If you create more objects of
+//the type Light then GL_MAX_LIGHTS you will get emty dummy-objects
+//(m_IsValid == false)
 class Light : public WorldObject {
 private:
     virtual void DefineObject();
 
-    //this static members are used to map the gl-internal lights GL_LIGHT0 -
-    //GL_MAX_LIGHTS to objets. If you create more objects of the type Light
-    //then GL_MAX_LIGHTS you will get emty dummy-objects(m_IsValid == false)
+    //this static members are used to map the gl-internal lights to objets.
     static bool* m_pIsAssigned;
     static int m_MaxNrOfLights;
 
@@ -33,7 +36,7 @@ protected:
     bool m_IsValid;
     GLenum m_Light;
 
-    //members for the glLight parameters
+    //members mapping the glLight parameters
     GLfloat m_aAmbient[4];
     GLfloat m_aDiffuse[4];
     GLfloat m_aSpecular[4];
@@ -44,11 +47,10 @@ protected:
     GLfloat m_ConstantAttenuation;
     GLfloat m_LinearAttenuation;
     GLfloat m_QuadraticAttenuation;
-    
 
 public:
     static int GetMaxNrOfLights() {return m_MaxNrOfLights;} //you have to create at least one light to get a valid value
-    
+
     Light(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
     virtual ~Light();
 
@@ -57,6 +59,8 @@ public:
 
     void SetColor(GLfloat red, GLfloat green, GLfloat blue);
 };
+
+
 }
 
 #endif

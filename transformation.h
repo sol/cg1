@@ -14,8 +14,11 @@
 #ifndef TRANSFORMATION_H
 #define TRANSFORMATION_H
 
-namespace Transformations {
 
+namespace Transformations {
+    
+
+//interface for transformations
 class Transformation {
 public:
      virtual ~Transformation() {}
@@ -24,7 +27,7 @@ public:
      virtual void InverseApply() = 0;
 };
 
-}
 
+}
 
 #endif

@@ -14,7 +14,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include <vector>
+#include "world.h"
 #include "animationcontroller.h"
 #include "lights.h"
 
@@ -22,11 +22,9 @@ class WorldObject;
 class Camera;
 
 
-
 class Scene {
 private:
     std::vector<WorldObject*> m_WorldObjects;
-//    std::vector<Camera*> m_Cameras;
     Camera* m_pActiveCamera;
     AnimationController *m_pAnimationController;
 
@@ -37,10 +35,8 @@ public:
     void SetCamera( Camera* pCamera );
     void Render();
     void ExecuteAllObjects();
-    AnimationController* GetAnimationController(){ return m_pAnimationController; }
+    AnimationController* GetAnimationController()  { return m_pAnimationController; }
 
 };
-
-
 
 #endif

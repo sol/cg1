@@ -14,22 +14,17 @@
 #include "animationcontroller.h"
 
 
-
-AnimationController::AnimationController()
-{
+AnimationController::AnimationController() {
     m_u32InternalTime = SDL_GetTicks();
     m_iPause = 0;
 }
 
 
-
-//adds an object to the list and returns cout of objects in the list
-void AnimationController::AddObject(AnimatedObject* pObjectToAdd)
-{
+void AnimationController::AddObject(AnimatedObject* pObjectToAdd) {
     m_AnimatedObjects.push_back(pObjectToAdd);
 }
 
-int AnimationController::OneStep(){
+int AnimationController::OneStep() {
     m_u32InternalTime += 10;//Animate has to be called 100 times per second  (10ms * 100 = 1s)
 
     std::vector<AnimatedObject*>::iterator it;
@@ -37,13 +32,12 @@ int AnimationController::OneStep(){
     for (it = m_AnimatedObjects.begin(); it < m_AnimatedObjects.end(); it++)
         (*it)->Animate();
 
-        return 0;
+    return 0;
 }
 
 
 
-int AnimationController::Animate()
-{
+int AnimationController::Animate() {
     if( !m_iPause )
         while( m_u32InternalTime < SDL_GetTicks() )
             OneStep();
@@ -51,34 +45,30 @@ int AnimationController::Animate()
     return 0;
 }
 
-int AnimationController::Pause(){
-    int retval = m_iPause;
-    m_iPause = 1;
+bool AnimationController::Pause(){
+    bool retval = m_iPause;
+    m_iPause = true;
     return retval;
 }
 
 
-int AnimationController::Unpause(){
-    int retval = m_iPause;
-    m_iPause = 0;
+bool AnimationController::Unpause(){
+    bool retval = m_iPause;
+    m_iPause = false;
     m_u32InternalTime = SDL_GetTicks();
     return retval;
 }
 
 
-int AnimationController::TogglePause(){
+bool AnimationController::TogglePause(){
     if( m_iPause )
         return Unpause();
     else
         return Pause();
 }
 
-void AnimationController::DeleteAllObjects(){
-//    std::vector<AnimatedObject*>::iterator it;
-//
-//    for (it = m_AnimatedObjects.begin(); it < m_AnimatedObjects.end(); it++)
-//        delete *it;
 
+void AnimationController::DeleteAllObjects(){
     m_AnimatedObjects.clear();
 }
 

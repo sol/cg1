@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   disk.cpp - (c) 2003 by The Marrowmoon Group                        //
+//   disk.cpp - (c) 2003 by The Marrowmoon Group                            //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,12 +11,13 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#include "world.h"
-
 #include "disk.h"
 
+
 namespace MeshObjects {
-Disk::Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices, GLint Loops, GLenum Style){
+
+    
+Disk::Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices, GLint Loops, GLenum Style) {
     GLuint list = glGenLists(1);
     glNewList(list, GL_COMPILE);
 
@@ -28,12 +29,8 @@ Disk::Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices, GLint Loops
     m_pGLList = new GLList( list );
 
     gluDeleteQuadric( disk );
-    
+
 }
 
 
-
-Disk::~Disk(){
-    
-}
 }

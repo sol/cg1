@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   rotation.h - (c) 2003 by The Marrowmoon Group                        //
+//   rotation.h - (c) 2003 by The Marrowmoon Group                          //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -20,6 +20,7 @@
 
 namespace Transformations {
 
+
 class Rotation : public Transformation {
 protected:
     GLfloat m_Angle;
@@ -34,7 +35,8 @@ public:
     void Apply() { glRotatef( m_Angle, m_X, m_Y, m_Z ); }
     void InverseApply(){ glRotatef( -m_Angle, m_X, m_Y, m_Z ); }
 };
-}
 
+
+}
 
 #endif

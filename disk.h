@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   disk.h - (c) 2003 by The Marrowmoon Group                        //
+//   disk.h - (c) 2003 by The Marrowmoon Group                              //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -14,14 +14,18 @@
 #ifndef DISK_H
 #define DISK_H
 
-#include "world.h"
 #include "meshobject.h"
 
 namespace MeshObjects {
-class Disk : public MeshObject  {
+
+    
+//this class provides MeshObject with a constructor appropriate for disks
+class Disk : public MeshObject {
 public: 
-	Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices=20, GLint Loops=10, GLenum Style = GLU_FILL);
-	~Disk();
+    Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices=20, GLint Loops=10, GLenum Style = GLU_FILL);
 };
+
+
 }
+
 #endif

@@ -14,11 +14,13 @@
 #ifndef SCALING_H
 #define SCALING_H
 
+#include "world.h"
 #include "transformation.h"
 
 
-
 namespace Transformations {
+
+
 class Scaling : public Transformation {
 private:
     //This values are used for scaling
@@ -31,7 +33,8 @@ public:
     void Apply() { glScalef(m_X, m_Y, m_Z); }
     void InverseApply(){ glScalef( 1/m_X, 1/m_Y, 1/m_Z ); }
 };
-}
 
+
+}
 
 #endif

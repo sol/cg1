@@ -17,6 +17,7 @@
 #include "world.h"
 #include "transformation.h"
 
+
 namespace Transformations {
 
 
@@ -29,11 +30,11 @@ protected:
 
 public:
     Translation(GLfloat X, GLfloat Y, GLfloat Z) : m_X(X), m_Y(Y), m_Z(Z) {}
-    ~Translation(){}
     void Apply() { glTranslatef( m_X, m_Y, m_Z ); }
     void InverseApply() { glTranslatef( -m_X, -m_Y, -m_Z ); }
 };
-}
 
+
+}
 
 #endif

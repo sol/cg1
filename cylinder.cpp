@@ -11,14 +11,13 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#include "world.h"
-
 #include "cylinder.h"
 #include "disk.h"
 
 namespace MeshObjects {
-Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
-            GLint Slices, GLint Stacks, GLenum Style){
+
+
+Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height, GLint Slices, GLint Stacks, GLenum Style) {
     GLuint list = glGenLists(1);
     glNewList(list, GL_COMPILE);
 
@@ -42,6 +41,6 @@ Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
     AddSubObject( top );
 
 }
-Cylinder::~Cylinder(){
-}
+
+
 }

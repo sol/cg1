@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   grid.h - (c) 2003 by The Marrowmoon Group                        //
+//   grid.h - (c) 2003 by The Marrowmoon Group                              //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -14,14 +14,19 @@
 #ifndef GRID_H
 #define GRID_H
 
-#include <meshobject.h>
+#include "meshobject.h"
 
 
 namespace MeshObjects {
-class Grid : public MeshObject  {
+
+
+//this class provides MeshObject with a constructor appropriate for grids
+class Grid : public MeshObject {
 public: 
-	Grid(GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth);
-	~Grid();
+    Grid(GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth);
 };
+
+
 }
+
 #endif

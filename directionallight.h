@@ -17,14 +17,16 @@
 #include "light.h"
 
 
-
 namespace Lights {
+    
+    
+//this class provides Light with a constructor appropriate for directional lights
 class DirectionalLight : public Light {
 public:
     DirectionalLight(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
+
+    
 }
-
-
 
 #endif

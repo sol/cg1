@@ -14,33 +14,28 @@
 #ifndef ANIMATIONCONTROLLER_H
 #define ANIMATIONCONTROLLER_H
 
+#include "world.h"
 #include "animatedobject.h"
-#include "SDL.h"
-#include <vector>
 
 
-
-class AnimationController//: public Controller
-{
+//an advanced container for AnimatedObjects
+class AnimationController {
 private:
     std::vector<AnimatedObject*> m_AnimatedObjects;
     Uint32 m_u32InternalTime;
-    int m_iPause;
+    bool m_iPause;
     
 public:
     AnimationController();
-//    int Control() {return Animate();}
-    int Animate();
-    int Pause();
-    int Unpause();
-    int TogglePause();
-    int OneStep();
-    void AddObject(AnimatedObject* ObjectToAdd);
-    void DeleteAllObjects();
+    
+    int Animate();  //calls Animate() of all associated objects as often as necessary
+    int OneStep();  //calls Animate() of all associated objects one time
+    bool Pause();
+    bool Unpause();
+    bool TogglePause();
 
-    Uint32 GetInternalTime() {return m_u32InternalTime;}
+    void AddObject(AnimatedObject* ObjectToAdd); //associates an object witg the AnimationController
+    void DeleteAllObjects(); //unassociates all objects
 };
-
-
 
 #endif

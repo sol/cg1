@@ -10,17 +10,19 @@
 //   (at your option) any later version.                                    //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
+
 #ifndef ANIMATEDTRANSLATION_H
 #define ANIMATEDTRANSLATION_H
 
 #include "world.h"
-
-#include "transformations.h"
+#include "translation.h"
 #include "animatedobject.h"
 
-namespace Transformations {
 
-class AnimatedTranslation : public Translation, public AnimatedObject  {
+namespace Transformations {
+    
+
+class AnimatedTranslation : public Translation, public AnimatedObject {
 private:
     GLfloat m_startX;
     GLfloat m_startY;
@@ -35,12 +37,14 @@ private:
     
     
 public: 
-	AnimatedTranslation(GLfloat startX, GLfloat startY, GLfloat startZ,
+    AnimatedTranslation(GLfloat startX, GLfloat startY, GLfloat startZ,
             GLfloat endX, GLfloat endY, GLfloat endZ,
             double Step=.01, double StartFactor=0.0);
             
-	~AnimatedTranslation();
     int Animate();
 };
+
+
 }
+
 #endif

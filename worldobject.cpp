@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   worldobject.cpp - (c) 2003 by The Marrowmoon Group                        //
+//   worldobject.cpp - (c) 2003 by The Marrowmoon Group                     //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,47 +11,39 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-
 #include "worldobject.h"
 
-WorldObject::~WorldObject(){
-    //delete Transforms
-    std::vector<Transformation*>::iterator TransformationIterator;
 
+WorldObject::~WorldObject() {
+    //delete transformations
+    std::vector<Transformation*>::iterator TransformationIterator;
     for (TransformationIterator = m_Transformations.begin(); TransformationIterator < m_Transformations.end(); TransformationIterator++)
         delete (*TransformationIterator);
 
-    //delete Subobjects
-    std::vector<WorldObject*>::iterator it;
-    for( it = m_SubObjects.begin(); it < m_SubObjects.end(); it++ )
-        delete (*it);
-
+    //delete sub-objects
+    std::vector<WorldObject*>::iterator SubObjectIterator;
+    for( SubObjectIterator = m_SubObjects.begin(); SubObjectIterator < m_SubObjects.end(); SubObjectIterator++ )
+        delete (*SubObjectIterator);
 }
-
 
 
 void WorldObject::Execute() {
     //apply transformations
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
+    
     std::vector<Transformation*>::reverse_iterator TransformationIterator;
-
     for (TransformationIterator = m_Transformations.rbegin(); TransformationIterator < m_Transformations.rend(); TransformationIterator++)
         (*TransformationIterator)->Apply();
 
+    //send the data of (*this) to the pipeline
     DefineObject();
     
     //execute all subobjects
     std::vector<WorldObject*>::iterator ObjectIterator;
-
     for (ObjectIterator = m_SubObjects.begin(); ObjectIterator < m_SubObjects.end(); ObjectIterator++)
         (*ObjectIterator)->Execute();
 
     //undo transformations
     glPopMatrix();
 }
-
-
-
-
-

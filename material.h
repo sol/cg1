@@ -17,8 +17,7 @@
 #include "world.h"
 
 
-class Material
-{
+class Material {
 private:
     GLfloat m_aAmbient[4];
     GLfloat m_aDiffuse[4];

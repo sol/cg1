@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   grid.cpp - (c) 2003 by The Marrowmoon Group                        //
+//   grid.cpp - (c) 2003 by The Marrowmoon Group                            //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,11 +11,13 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#include "world.h"
 #include "grid.h"
 
+
 namespace MeshObjects {
-Grid::Grid( GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth ){
+
+    
+Grid::Grid( GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth ) {
     GLuint list = glGenLists(1);
     glNewList(list, GL_COMPILE);
 
@@ -41,8 +43,4 @@ Grid::Grid( GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth
 }
 
 
-
-Grid::~Grid(){
-    
-}
 }

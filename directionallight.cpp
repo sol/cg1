@@ -15,8 +15,11 @@
 
 
 namespace Lights {
-
+    
+    
 DirectionalLight::DirectionalLight(GLfloat red, GLfloat green, GLfloat blue) : Light(red, green, blue) {
     //the defaults are ok for directional lights
 }
+
+    
 }

@@ -15,14 +15,10 @@
 #define ANIMATEDOBJECT_H
 
 
-
-class AnimatedObject
-{
+class AnimatedObject {
 public:
     virtual ~AnimatedObject() {}
     virtual int Animate() = 0;
 };
-
-
 
 #endif

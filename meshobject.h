@@ -14,14 +14,13 @@
 #ifndef MESHOBJECT_H
 #define MESHOBJECT_H
 
-#include "world.h"
-
-#include "gllist.h"
-#include "material.h"
-#include "transformation.h"
 #include "worldobject.h"
+#include "material.h"
+#include "gllist.h"
+
 
 namespace MeshObjects {
+
 
 class MeshObject : public WorldObject {
 private:
@@ -35,10 +34,11 @@ protected:
 
 public:
     MeshObject();
-    ~MeshObject();
+    virtual ~MeshObject();//deletes m_pGLList and m_pMaterial
 
     void SetMaterial(GLfloat red, GLfloat green, GLfloat blue);
 };
+
 
 }
 

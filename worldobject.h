@@ -11,36 +11,36 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-
 #ifndef WORLDOBJECT_H
 #define WORLDOBJECT_H
 
-
 #include "world.h"
 #include "transformations.h"
-//class Translation;
-//class Rotation;
-//class Scaling;
 
-class WorldObject
-{
+
+//This is an appropriate base class for all objects needed to be transformed
+class WorldObject {
 private:
+    //in this function, derived objects should send their specific data to the pipeline
     virtual void DefineObject() = 0;
-    std::vector<WorldObject*> m_SubObjects;
     
+    std::vector<WorldObject*> m_SubObjects;
+
 protected:
     std::vector<Transformation*> m_Transformations;
 
-
 public:
-    void AddTransform(Transformation* pTransformation)   {m_Transformations.push_back(pTransformation);}
-    void Execute();
-    
-    void AddRotation( GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z ){ AddTransform( new Rotation( Angle, X, Y, Z )); }
-    void AddTranslation( GLfloat X, GLfloat Y, GLfloat Z ){ AddTransform( new Translation( X, Y, Z )); }
-    void AddScaling( GLfloat X, GLfloat Y, GLfloat Z ){ AddTransform( new Scaling( X, Y, Z )); }
     virtual ~WorldObject();
-    void AddSubObject(WorldObject* pObject)           {m_SubObjects.push_back(pObject);}
+
+    //in this function the data of (*this) and all sub-objects are sent to the pipleine
+    void Execute();
+
+    //all added transformations and sub-objects are deleted in WorldObject::~WorldObject
+    void AddSubObject(WorldObject* pObject)                             { m_SubObjects.push_back(pObject); }
+    void AddTransformation(Transformation* pTransformation)             { m_Transformations.push_back(pTransformation); }
+    void AddRotation( GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z )  { AddTransformation( new Rotation( Angle, X, Y, Z )); }
+    void AddTranslation( GLfloat X, GLfloat Y, GLfloat Z )              { AddTransformation( new Translation( X, Y, Z )); }
+    void AddScaling( GLfloat X, GLfloat Y, GLfloat Z )                  { AddTransformation( new Scaling( X, Y, Z )); }
 };
 
-#endif // WORLDOBJECT_H
+#endif

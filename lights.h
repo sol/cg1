@@ -15,11 +15,11 @@
 #define LIGHTS_H
 
 #include "light.h"
-#include "pointlight.h"
 #include "spotlight.h"
+#include "pointlight.h"
 #include "directionallight.h"
 
-using namespace Lights;
 
+using namespace Lights;
 
 #endif
