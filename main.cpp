@@ -75,7 +75,7 @@
 #include "meshobjects.h"
 #include "lights.h"
 #include "transformations.h"
-//#include "softmaterial.h"
+#include <exception>
 
 
 
@@ -128,28 +128,26 @@ Scene* Scene5();
 
 
 int main(int argc, char** argv) {
+        World MyWorld;
+        AnimationController MyAnimationController;
+        Scene* MyScene = Scene2();
+    //    MyWorld.AddScene( MyScene );
 
-    World MyWorld;
-    AnimationController MyAnimationController;
-    Scene* MyScene = Scene1();
-//    MyWorld.AddScene( MyScene );
+        int key;
 
-    int key;
-    
-    while(1)
-    {
-        key = process_events();
-        if( key == TOGGLE_PAUSE ) MyScene->GetAnimationController()->TogglePause();
-        if( key == SCENE1 ){ delete MyScene; MyScene = Scene1(); } 
-        if( key == SCENE2 ){ delete MyScene; MyScene = Scene2(); } 
-        if( key == SCENE3 ){ delete MyScene; MyScene = Scene3(); } 
-        if( key == SCENE4 ){ delete MyScene; MyScene = Scene4(); } 
-        if( key == SCENE5 ){ delete MyScene; MyScene = Scene5(); } 
+        while(1)
+        {
+            key = process_events();
+            if( key == TOGGLE_PAUSE ) MyScene->GetAnimationController()->TogglePause();
+            if( key == SCENE1 ){ delete MyScene; MyScene = Scene1(); }
+            if( key == SCENE2 ){ delete MyScene; MyScene = Scene2(); }
+            if( key == SCENE3 ){ delete MyScene; MyScene = Scene3(); }
+            if( key == SCENE4 ){ delete MyScene; MyScene = Scene4(); }
+            if( key == SCENE5 ){ delete MyScene; MyScene = Scene5(); }
 
-        MyScene->Render();
+            MyScene->Render();
 
-    }
-
+        }
     return 0;
 
 
@@ -190,7 +188,7 @@ Scene* Scene1(){
 
 //        sph1 = new Cylinder(.5, .5, .7);
 //        sph1 = new Cube(.7, .7, .7);        
-        sph1 = new Sphere( .5, 30, 30);
+        sph1 = new Sphere( .5, 30, 30, GLU_FILL );
         sph1->AddTranslation( rand()%XX / 10, rand()%YY / 10, rand()%ZZ / 10 );
         sph1->SetMaterial(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0);
         
@@ -204,13 +202,134 @@ Scene* Scene1(){
     return MyScene;
 }
 
-
+/*************************************************************************************************/
 Scene* Scene2(){
     Scene *MyScene = new Scene;
     Camera *MyCamera = new Camera;
 
     MyScene->SetCamera( MyCamera );
-    MyCamera->AddTranslation( 0, 0, 10 );
+    MyCamera->AddTranslation( 0, 0, 6 );
+//    MyCamera->AddRotation(-30, 1, 0, 0);
+
+    Grid *grid = new Grid(100, 100, 100, 100);
+    grid->AddRotation(90, 1, 0, 0);
+    grid->AddTranslation(0, -.5, 0);
+    grid->SetMaterial(.1, .1, .1);
+    MyScene->AddWorldObject( grid );
+    
+    OscillatingRotation *WalkUpper1 = new OscillatingRotation(-60, 60, .01, 1, 0, 0, 0, OSCIL_SINUS);
+    OscillatingRotation *WalkLower1 = new OscillatingRotation(0, 90, .01, 1, 0, 0, 0, OSCIL_SINUS);
+    MyScene->GetAnimationController()->AddObject( WalkUpper1 );
+    MyScene->GetAnimationController()->AddObject( WalkLower1 );
+   
+    OscillatingRotation *WalkUpper2 = new OscillatingRotation(-60, 60, .01, 1, 0, 0, .5, OSCIL_SINUS);
+    OscillatingRotation *WalkLower2 = new OscillatingRotation(0, 90, .01, 1, 0, 0, .5, OSCIL_SINUS);
+    MyScene->GetAnimationController()->AddObject( WalkUpper2 );
+    MyScene->GetAnimationController()->AddObject( WalkLower2 );
+
+    OscillatingRotation *WalkArm1 = new OscillatingRotation( -60, 100, .01, 1, 0, 0, 0.5, OSCIL_SINUS);
+    MyScene->GetAnimationController()->AddObject( WalkArm1 );
+    OscillatingRotation *WalkArm2 = new OscillatingRotation( -60, 100, .01, 1, 0, 0, 0, OSCIL_SINUS);
+    MyScene->GetAnimationController()->AddObject( WalkArm2 );
+
+    OscillatingRotation *WalkTorso = new OscillatingRotation( -10, 10, .01, 0, 1, 0, 0.5, OSCIL_SINUS);
+    MyScene->GetAnimationController()->AddObject( WalkTorso );
+
+//    AnimatedTranslation *Walk = new AnimatedTranslation(-7, 0, -5, 10, 0, 6, .05, 0);
+//    MyScene->GetAnimationController()->AddObject( Walk );
+    AnimatedRotation* circle = new AnimatedRotation( 0, 0, 1, 0, .6 );
+    AnimatedRotation *rot1 = new AnimatedRotation(0, 0, -1, 0, 1);
+    MyScene->GetAnimationController()->AddObject( circle );
+    MyScene->GetAnimationController()->AddObject( rot1 );
+
+    //Torso
+    Cube *Torso = new Cube(.22, .35, .1);
+    Torso->AddTranslation(-.11, -.175, -.05);
+    Torso->SetMaterial(.1, .3 , .1);
+//    Torso->AddRotation(60, 0, 1, 0);
+    Torso->AddTransformation( WalkTorso );
+//    Torso->AddTransformation( rot1 );
+    Torso->AddTranslation(-3, 0, 0);
+    Torso->AddTransformation( circle );
+
+    //Head
+    Sphere *Head = new Sphere(.11);
+    Head->AddTranslation(.1, .5, .05);
+    Torso->AddSubObject( Head );
+    Head->SetMaterial(.3, .2, .2);
+
+    //Left Arm
+    Cylinder* LUpperArm = new Cylinder(.05, .05, .2 );
+    Torso->AddSubObject( LUpperArm );
+    LUpperArm->AddRotation( 90, 0, 1, 0 );
+    LUpperArm->AddTranslation( -.2, 0, 0 );
+    LUpperArm->SetMaterial(.1, .3, .1);
+    //Add Custom Rotations!!
+    LUpperArm->AddRotation( 90, 0, 0, 1 );
+    LUpperArm->AddTransformation( WalkArm1 );
+
+    LUpperArm->AddTranslation( -.02, .30, .05 );
+    Cylinder* LLowerArm = new Cylinder( .05, .05, .2 );
+    LLowerArm->AddTranslation( 0, 0, -.22 );
+    //AddCustomRotations!
+    LLowerArm->AddRotation(90, 0, 1, 0);
+
+    LUpperArm->AddSubObject( LLowerArm );
+
+    //Right Arm
+    Cylinder* RUpperArm = new Cylinder(.05, .05, .2 );
+    Torso->AddSubObject( RUpperArm );
+    RUpperArm->AddRotation( 90, 0, 1, 0 );
+    //Add Custom Rotations!!
+    RUpperArm->AddRotation(-90, 0, 0, 1);
+    RUpperArm->AddTransformation( WalkArm2 );
+
+    RUpperArm->AddTranslation( .24, .30, .05 );
+    Cylinder* RLowerArm = new Cylinder( .05, .05, .2 );
+    //AddCustomRotations!
+    RLowerArm->AddRotation(-90, 0, 1, 0);
+
+    RLowerArm->AddTranslation( 0, 0, .22 );
+    RUpperArm->AddSubObject( RLowerArm );
+
+    //Left Leg
+    Cylinder *LUpperLeg = new Cylinder(.05, .05, .2);
+    LUpperLeg->AddRotation(90, 1, 0, 0);
+    LUpperLeg->SetMaterial(.1, .1, .3);
+    Torso->AddSubObject( LUpperLeg );
+    //AddCustomRotations!!
+    LUpperLeg->AddTransformation( WalkUpper1 );
+
+    LUpperLeg->AddTranslation(.05, -.01, .05);
+    Cylinder *LLowerLeg = new Cylinder(.05, .05, .2);
+    //Custom Rotations
+    LLowerLeg->AddTransformation( WalkLower1 );
+
+    LLowerLeg->AddTranslation(0, 0, .21);
+    LUpperLeg->AddSubObject( LLowerLeg );
+
+    //Right Leg
+    Cylinder *RUpperLeg = new Cylinder( .05, .05, .2 );
+    Torso->AddSubObject( RUpperLeg );
+    RUpperLeg->AddRotation( 90, 1, 0, 0 );
+    //Custom Rotations
+    RUpperLeg->AddTransformation( WalkUpper2 );
+
+    RUpperLeg->AddTranslation( .17, -.01, .05 );
+
+    Cylinder *RLowerLeg = new Cylinder( .05, .05, .2 );
+    RUpperLeg->AddSubObject( RLowerLeg );
+    //Custom Rotations
+    RLowerLeg->AddTransformation( WalkLower2 );
+
+    RLowerLeg->AddTranslation( 0, 0, .21 );
+
+    Light *light1 = new PointLight;
+    light1->AddTranslation(-7, 7, 7);
+
+    MyScene->AddWorldObject( light1 );
+    MyScene->AddWorldObject( Torso );
+    
 
     return MyScene;
 }
@@ -247,7 +366,7 @@ Scene* Scene3(){
     sphere2->AddTranslation(0, 4, 7);
     sphere2->AddTransformation( rot1 );
 
-    Light *light1 = new SpotLight(40);
+    Light *light1 = new PointLight;
     MyScene->AddWorldObject( light1 );
     light1->AddTranslation(0, 4, 7);
     light1->AddTransformation( rot2 );
@@ -274,9 +393,10 @@ Scene* Scene4(){
     int which;
     MeshObject* mob;
     AnimatedTranslation *AniTrans;
+    AnimatedRotation *AniRot;
     for( int i = 0; i < 20; i++ ){
         //rings
-        AniTrans = new AnimatedTranslation(0, 0, 0, 0, 0, -300, .0006, i/20.0);
+        AniTrans = new AnimatedTranslation(0, 0, -300, 0, 0, 300, .0006, i/20.0);
         MyScene->GetAnimationController()->AddObject( AniTrans );
 
         Disk *disk = new Disk(5, 5.3, 50, 2);
@@ -297,12 +417,16 @@ Scene* Scene4(){
             mob = new Cylinder(.4, .4, rand()%10/10.0+.2);
         else
             mob = new Cube(rand()%10/10.0+.2, rand()%10/10.0+.2, rand()%10/10.0+.2);
-            
+
+        AniRot = new AnimatedRotation(0, rand()%10/10.0-.5, rand()%10/10.0-.5, rand()%10/10.0-.5, rand()%40/10.0);
+        MyScene->GetAnimationController()->AddObject( AniRot );
+        mob->AddTransformation( AniRot );
+        
         mob->AddRotation(rand()%360, rand()%10/10.0, rand()%10/10.0, rand()%10/10.0);
         MyScene->AddWorldObject( mob );
         mob->AddTransformation( AniTrans );
         mob->SetMaterial(rand()%10/10.0+.2, rand()%10/10.0+.2, rand()%10/10.0+.2);
-        
+
     }
 
     Grid *grid = new Grid(500, 500, 100, 100);

@@ -18,14 +18,15 @@
 
 
 class Material {
-protected:
+private:
     GLfloat m_aAmbient[4];
     GLfloat m_aDiffuse[4];
     GLfloat m_aSpecular[4];
     GLfloat m_aEmission[4];
     GLfloat m_Shininess;
 
-    void SetMaterialComponent(GLfloat* Component, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha = 1);
+protected:
+    void SetMaterialComponent(GLfloat* Component, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
     
 public:
     Material(GLfloat red = 0.2, GLfloat green = 0.2, GLfloat blue = 0.2) {SetColor(red, green, blue);}

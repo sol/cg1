@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   transformations.h - (c) 2003 by The Marrowmoon Group                   //
+//   oscillatingrotation.cpp - (c) 2003 by The Marrowmoon Group                        //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,20 +11,21 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef TRANSFORMATIONS_H
-#define TRANSFORMATIONS_H
-
-#include "transformation.h"
-#include "translation.h"
-#include "rotation.h"
-#include "scaling.h"
-#include "translation.h"
-#include "animatedrotation.h"
-#include "animatedtranslation.h"
-#include "scaling.h"
 #include "oscillatingrotation.h"
-
+#include "math.h"
 
 using namespace Transformations;
 
-#endif
+int OscillatingRotation::Animate(){
+    if( m_iType == OSCIL_LINEAR ){
+        m_lfProgress += m_lfSpeed;
+        if( m_lfProgress > 1 || m_lfProgress < 0 ) m_lfSpeed *= -1;
+        m_Angle = m_lfStartAngle + ( m_lfStopAngle - m_lfStartAngle ) * m_lfProgress;
+    }
+    if( m_iType == OSCIL_SINUS ){
+        m_lfProgress += m_lfSpeed;
+        if( m_lfProgress > 1 ) m_lfProgress = 0;
+        m_Angle = m_lfStartAngle + ( m_lfStopAngle - m_lfStartAngle ) * ( sin(m_lfProgress * 6.28) + 1 ) / 2;
+    }
+    return 0;
+}
