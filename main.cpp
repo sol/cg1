@@ -10,6 +10,19 @@
 //   (at your option) any later version.                                    //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+//                                                                          //
+//   A simple OpenGL apllication using cpp and featuring hierarchical       //
+//   transformations.                                                       //
+//                                                                          //
+//////////////////////////////////////////////////////////////////////////////
+//                                                                          //
+//   Authors: Markus Klinik and Simon Hengel                                //
+//                                                                          //
+//////////////////////////////////////////////////////////////////////////////
 //                                                                          //
 //   You should have received a copy of the GNU General Public License      //
 //   with this software, if not it is availabel online at:                  //
@@ -21,7 +34,7 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   Comments of the authors Markus Klinik and Simon Hengel:                //
+//   Comments of the Authors:                                               //
 //                                                                          //
 //   This program was written for a cg-course at the University of          //
 //   Applied Sciences Georg-Simon-Ohm Fachhochschule Nuernberg. As we       //
@@ -39,10 +52,15 @@
 //                                                                          //
 //   -Advanced scene-management by the World class.                         //
 //                                                                          //
-//   If you have implemented one of the above or other useful features,     //
-//   please let us know                                                     //
+//   Known Bugs:                                                            //
 //                                                                          //
-//   Bug reports and additional comments are welcomed.                      //
+//   - The hierarchical transformations work not in the right way, if       //
+//     the camera is a sub-object.                                          //
+//                                                                          //
+//   If you have implemented one of the above or other useful features or   //
+//   if you have done a bug fix, please let us know.                        //
+//                                                                          //
+//   Bug reports and additional comments are welcome.                       //
 //                                                                          //
 //   Contact: markus.klinik@gmx.de or simon.hengel@web.de                   //
 //                                                                          //
