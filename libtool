@@ -34,10 +34,10 @@ Xsed="sed -e s/^X//"
 if test "X${CDPATH+set}" = Xset; then CDPATH=:; export CDPATH; fi
 
 ### BEGIN LIBTOOL CONFIG
-# Libtool was configured as follows, on host a415-linux44.informatik.fh-nuernberg.de:
+# Libtool was configured as follows, on host a415-linux45.informatik.fh-nuernberg.de:
 #
-# AR="" CC="g++" CFLAGS=" -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT " CPPFLAGS="" \
-# MAGIC="" LD="/usr/i386-linux/bin/ld" LDFLAGS="  -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread " LIBS="" \
+# AR="" CC="g++" CFLAGS=" -O0 -g3 -Wall   -I/usr/include/SDL -D_REENTRANT " CPPFLAGS="" \
+# MAGIC="" LD="/usr/i386-linux/bin/ld" LDFLAGS="  -L/usr/lib -Wl,-rpath,/usr/lib -lSDL -lpthread " LIBS="" \
 # LN_S="ln -s" NM="/usr/bin/nm -B" RANLIB="ranlib" STRIP="strip" \
 # AS="" DLLTOOL="" OBJDUMP="" \
 # objext="" exeext="" reload_flag="" \

@@ -2,7 +2,7 @@
 # Generated automatically by configure.
 # Run this file to recreate the current configuration.
 # This directory was configured as follows,
-# on host a415-linux44.informatik.fh-nuernberg.de:
+# on host a415-linux45.informatik.fh-nuernberg.de:
 #
 # ./configure  --prefix /usr/local
 #
@@ -36,12 +36,12 @@ sed 's/%@/@@/; s/@%/@@/; s/%g$/@g/; /@g$/s/[\\&%]/\\&/g;
 /^[ 	]*VPATH[ 	]*=[^:]*$/d
 
 s%@SHELL@%/bin/sh%g
-s%@CFLAGS@% -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT %g
+s%@CFLAGS@% -O0 -g3 -Wall   -I/usr/include/SDL -D_REENTRANT %g
 s%@CPPFLAGS@%%g
-s%@CXXFLAGS@% -O0 -g3 -Wall   -I/users/students/in11013/include/SDL -D_REENTRANT %g
+s%@CXXFLAGS@% -O0 -g3 -Wall   -I/usr/include/SDL -D_REENTRANT %g
 s%@FFLAGS@%%g
 s%@DEFS@%-DHAVE_CONFIG_H%g
-s%@LDFLAGS@%  -L/users/students/in11013/lib -Wl,-rpath,/users/students/in11013/lib -lSDL -lpthread %g
+s%@LDFLAGS@%  -L/usr/lib -Wl,-rpath,/usr/lib -lSDL -lpthread %g
 s%@LIBS@%%g
 s%@exec_prefix@%${prefix}%g
 s%@prefix@%/usr/local%g
@@ -89,7 +89,7 @@ s%@CPP@%gcc -E%g
 s%@CXX@%g++%g
 s%@USE_EXCEPTIONS@%-fexceptions%g
 s%@USE_RTTI@%-frtti%g
-s%@NOOPT_CXXFLAGS@% -O0 -g3 -Wall -I/users/students/in11013/include/SDL -D_REENTRANT%g
+s%@NOOPT_CXXFLAGS@% -O0 -g3 -Wall -I/usr/include/SDL -D_REENTRANT%g
 s%@KDE_USE_FINAL_TRUE@%#%g
 s%@KDE_USE_FINAL_FALSE@%%g
 s%@REPO@%-frepo%g

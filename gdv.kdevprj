@@ -1,13 +1,14 @@
 [Config for BinMakefileAm]
-addcxxflags=$(~/bin/sdl-config --cflags)
+addcxxflags=$(sdl-config --cflags)
 bin_program=gdv
 cxxflags=\s-O0 -g3 -Wall
-ldadd=-lGLU -lGL
-ldflags=$(~/bin/sdl-config --libs)
+ldadd=-lGLU -lGL -L/usr/X11R6/lib/
+ldflags=$(sdl-config --libs)
 
 [General]
 AMChanged=false
 author=
+configure_args=
 email=
 kdevprj_version=1.3
 lfv_open_groups=
