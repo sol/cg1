@@ -27,8 +27,9 @@ private:
     
 public:
     Material(GLfloat red = 0.2, GLfloat green = 0.2, GLfloat blue = 0.2) {SetColor(red, green, blue);}
+    virtual ~Material() {}
 
-    void SetColor(GLfloat red, GLfloat green, GLfloat blue);
+    virtual void SetColor(GLfloat red, GLfloat green, GLfloat blue);
     void Apply();
 };
 
