@@ -129,7 +129,7 @@ Scene* Scene5();
 
 int main(int argc, char** argv) {
         World MyWorld;
-        AnimationController MyAnimationController;
+//        AnimationController MyAnimationController;
         Scene* MyScene = Scene2();
     //    MyWorld.AddScene( MyScene );
 
@@ -459,5 +459,25 @@ Scene* Scene5(){
     Camera *MyCamera = new Camera;
 
     MyScene->SetCamera( MyCamera );
+
+    Cylinder *Cylinder1 = new Cylinder( 1, 1, 1 , 40, 40);
+    Cylinder1->AddTranslation( 0, 0, -.5 );
+    Cylinder1->SetMaterial( .2, .3, .2 ); // light green
+
+
+    AnimatedRotation *AniRot1 = new AnimatedRotation( 0, 0, 1, 0, .5 );
+    MyScene->GetAnimationController()->AddObject( AniRot1 );
+    Cylinder1->AddTransformation( AniRot1 );
+
+    // move cylinder 3 units away from camera
+    Cylinder1->AddTranslation( 0, 0, -3 );
+
+    MyScene->AddWorldObject( Cylinder1 );
+
+    PointLight *Light1 = new PointLight;
+    // this works because Light is a WorldObject:
+    Light1->AddTranslation( -2, .5, 0 );
+    MyScene->AddWorldObject( Light1 );
+
     return MyScene;
 }

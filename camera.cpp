@@ -31,7 +31,7 @@ Camera::Camera() {
     int width = 1024;
     int height = 768;
 
-    if( SDL_SetVideoMode( width, height, bpp, SDL_OPENGL /*| SDL_FULLSCREEN*/ ) == 0)
+    if( SDL_SetVideoMode( width, height, bpp, SDL_OPENGL | SDL_FULLSCREEN ) == 0)
     {
         fprintf( stderr, "Video mode set failed: %s\n", SDL_GetError() );
         SDL_Quit();
