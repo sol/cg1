@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   animatedrotation.h - (c) 2003 by The Marrowmoon Group                        //
+//   animatedrotation.h - (c) 2003 by The Marrowmoon Group                  //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,16 +11,15 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-
 #ifndef ANIMATEDROTATION_H
 #define ANIMATEDROTATION_H
 
+#include "world.h"
+
 #include "rotation.h"
 #include "animatedobject.h"
-#include "GL/gl.h"
 
-class AnimatedRotation : public Rotation, public AnimatedObject
-{
+class AnimatedRotation : public Rotation, public AnimatedObject {
 private:
     GLdouble m_DeltaAngle;
 

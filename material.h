@@ -14,7 +14,7 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include <GL/gl.h>
+#include "world.h"
 
 
 class Material

@@ -14,8 +14,9 @@
 #ifndef CYLINDER_H
 #define CYLINDER_H
 
+#include "world.h"
+
 #include "meshobject.h"
-#include <GL/glu.h>
 
 
 class Cylinder : public MeshObject  {

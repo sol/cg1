@@ -60,7 +60,6 @@ Light::Light(GLfloat red, GLfloat green, GLfloat blue) {
 Light::~Light() {
     if (m_IsValid) {
         Disable();
-        int a = m_Light - GL_LIGHT0;
         m_pIsAssigned[m_Light - GL_LIGHT0] = false;
     }
 }

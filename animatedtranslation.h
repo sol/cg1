@@ -13,9 +13,9 @@
 #ifndef ANIMATEDTRANSLATION_H
 #define ANIMATEDTRANSLATION_H
 
-#include "translation.h"
-#include <GL/gl.h>
+#include "world.h"
 
+#include "translation.h"
 #include "animatedobject.h"
 
 

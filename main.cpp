@@ -12,9 +12,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "world.h"
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <stdlib.h>
+
 #include "camera.h"
 #include "gllist.h"
 #include "meshobject.h"

@@ -1,6 +1,6 @@
 
+#include "world.h"
 #include "sphere.h"
-#include "GL/glu.h"
 
 Sphere::Sphere( GLdouble Radius, int iSlices, int iStacks, GLenum Style ){
     GLuint list = glGenLists(1);

@@ -11,8 +11,9 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
+#include "world.h"
+
 #include "disk.h"
-#include "GL/glu.h"
 
 Disk::Disk(GLdouble InnerRadius, GLdouble OuterRadius, GLint Slices, GLint Loops, GLenum Style){
     GLuint list = glGenLists(1);

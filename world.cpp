@@ -12,10 +12,6 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "world.h"
-#include <SDL/SDL.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-
 
 
 World::World() {

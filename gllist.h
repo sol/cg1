@@ -14,8 +14,7 @@
 #ifndef GLLIST_H
 #define GLLIST_H
 
-#include <GL/gl.h>
-
+#include "world.h"
 
 
 class GLList {

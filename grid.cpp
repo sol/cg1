@@ -11,8 +11,8 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
+#include "world.h"
 #include "grid.h"
-#include "GL/gl.h"
 
 Grid::Grid( GLdouble Height, GLdouble Width, GLint StepsHeight, GLint StepsWidth ){
     GLuint list = glGenLists(1);

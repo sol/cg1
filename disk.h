@@ -14,8 +14,8 @@
 #ifndef DISK_H
 #define DISK_H
 
+#include "world.h"
 #include "meshobject.h"
-#include <GL/glu.h>
 
 class Disk : public MeshObject  {
 public: 

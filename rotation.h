@@ -14,7 +14,7 @@
 #ifndef ROTATION_H
 #define ROTATION_H
 
-#include <GL/gl.h>
+#include "world.h"
 #include "transformation.h"
 
 

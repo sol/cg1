@@ -11,9 +11,8 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <SDL.h>
+#include "world.h"
+
 #include "camera.h"
 #include "scene.h"
 #include "transformation.h"

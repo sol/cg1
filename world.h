@@ -14,8 +14,12 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include "scene.h"
+#include <SDL.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include <vector>
+
+#include "scene.h"
 
 
 

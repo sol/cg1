@@ -14,8 +14,8 @@
 #ifndef TRANSLATION_H
 #define TRANSLATION_H
 
+#include "world.h"
 #include "transformation.h"
-#include <GL/gl.h>
 
 
 class Translation : public Transformation {

@@ -14,8 +14,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "GL/gl.h"
-//#include <vector>
+#include "world.h"
+
 #include "worldobject.h"
 
 class OpenGLContext;

@@ -2,8 +2,8 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
+#include "world.h"
 #include "meshobject.h"
-#include <GL/glu.h>
 
 class Sphere : public MeshObject
 {

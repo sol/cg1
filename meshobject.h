@@ -14,12 +14,12 @@
 #ifndef MESHOBJECT_H
 #define MESHOBJECT_H
 
+#include "world.h"
+
 #include "gllist.h"
 #include "material.h"
 #include "transformation.h"
-#include <vector>
 #include "worldobject.h"
-#include <GL/gl.h>
 
 class MeshObject : public WorldObject {
 private:

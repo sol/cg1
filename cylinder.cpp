@@ -11,8 +11,9 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
+#include "world.h"
+
 #include "cylinder.h"
-#include <GL/glu.h>
 #include "disk.h"
 
 Cylinder::Cylinder(GLdouble BaseRadius, GLdouble TopRadius, GLdouble Height,
