@@ -52,4 +52,12 @@ void MeshObject::SetMaterial(GLfloat red, GLfloat green, GLfloat blue) {
 }
 
 
+void MeshObject::SetMaterial(Material* pMaterial) {
+    if (m_pMaterial)
+        delete m_pMaterial;
+
+    m_pMaterial = pMaterial;
+}
+
+
 }

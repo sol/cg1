@@ -23,7 +23,7 @@ namespace MeshObjects {
 //this class provides MeshObject with a constructor appropriate for spheres
 class Sphere : public MeshObject {
 public:
-    Sphere( GLdouble Radius, int iSlices = 20, int Stacks=20, GLenum Style = GLU_FILL );
+    Sphere( GLdouble Radius, int iSlices = 20, int Stacks = 20, GLenum Style = GLU_FILL );
 };
 
 

@@ -37,6 +37,7 @@ public:
     virtual ~MeshObject();//deletes m_pGLList and m_pMaterial
 
     void SetMaterial(GLfloat red, GLfloat green, GLfloat blue);
+    void SetMaterial(Material* pMaterial);
 };
 
 

@@ -75,6 +75,7 @@
 #include "meshobjects.h"
 #include "lights.h"
 #include "transformations.h"
+#include "softmaterial.h"
 
 
 
@@ -191,7 +192,7 @@ Scene* Scene1(){
 //        sph1 = new Cube(.7, .7, .7);        
         sph1 = new Sphere( .5, 30, 30, GLU_FILL );
         sph1->AddTranslation( rand()%XX / 10, rand()%YY / 10, rand()%ZZ / 10 );
-        sph1->SetMaterial(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0);
+        sph1->SetMaterial(new SoftMaterial(rand()%3/10.0, rand()%3/10.0, rand()%3/10.0));
         
         aniRot = new AnimatedRotation( rand() % 360, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand() % 10 / 10.0)+.1 );
         sph1->AddTransformation( aniRot );
