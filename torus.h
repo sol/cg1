@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   animationcontroller.cpp - (c) 2003, 2004 by The Marrowmoon Group       //
+//   torus.h - (c) 2003 by The Marrowmoon Group                             //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,48 +11,30 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#include "animationcontroller.h"
+#ifndef TORUS_H
+#define TORUS_H
+
+#include "meshobject.h"
 
 
+namespace MeshObjects {
 
-//constructor
-AnimationController::AnimationController()
+
+//this class provides MeshObject with a constructor appropriate a torus
+class Torus : public MeshObject
 {
-	m_u32InternalTime = SDL_GetTicks();
-	m_IsPause = false;
+private:
+    GLdouble m_InnerRadius;
+    GLdouble m_OuterRadius;
+    GLint m_SidesPerSection;
+    GLint m_Sections;
+    void DefineObject();
+
+public:
+    Torus(GLdouble InnerRadius, GLdouble OuterRadius, GLint SidesPerSection, GLint Sections);
+};
+
+
 }
 
-
-
-void AnimationController::Animate()
-{
-	if (!m_IsPause)
-	{
-		Uint32 OldInternalTime = m_u32InternalTime;
-		m_u32InternalTime = SDL_GetTicks();
-
-		std::vector<AnimatedObject*>::iterator it;
-
-		//call Animate() for all associated objects
-		for (it = m_AnimatedObjects.begin(); it < m_AnimatedObjects.end(); it++)
-			(*it)->OnAnimate(m_u32InternalTime - OldInternalTime);
-	}
-}
-
-
-
-void AnimationController::Unpause()
-{
-	m_IsPause = false;
-	m_u32InternalTime = SDL_GetTicks();
-}
-
-
-void AnimationController::TogglePause()
-{
-	if(m_IsPause)
-		Unpause();
-
-	else
-		Pause();
-}
+#endif

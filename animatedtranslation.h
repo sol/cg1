@@ -32,16 +32,17 @@ private:
     GLfloat m_endY;
     GLfloat m_endZ;
 
-    double m_Step;
+    double m_PercentPerSecond;
     double m_Factor;
     
     
-public: 
-    AnimatedTranslation(GLfloat startX, GLfloat startY, GLfloat startZ,
+public:
+	//
+	AnimatedTranslation(GLfloat startX, GLfloat startY, GLfloat startZ,
             GLfloat endX, GLfloat endY, GLfloat endZ,
-            double Step=.01, double StartFactor=0.0);
+            double PercentPerSecond = 1.0, double StartFactor=0.0);
             
-    int Animate();
+    void OnAnimate(unsigned int TimeToAnimate);
 };
 
 

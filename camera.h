@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   camera.h - (c) 2003 by The Marrowmoon Group                            //
+//   camera.h - (c) 2003, 2004 by The Marrowmoon Group                      //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -17,23 +17,25 @@
 #include "worldobject.h"
 
 
-class OpenGLContext;
 class Scene;
 
 
+//to render any scene, we need a camera
 //!!! camera does not work as subobject !!!
-class Camera : public WorldObject{
+class Camera : public WorldObject
+{
 private:
-    OpenGLContext* m_pOpenGLContext;
-    Scene* m_pAssociatedScene;
+	Scene* m_pAssociatedScene;
 
-    void DefineObject(){}
+	void DefineObject(){}
     
 public:
-    Camera();
+	Camera();
 
-    void SetAssociatedScene(Scene* pAssociatedScene) {m_pAssociatedScene = pAssociatedScene;}
-    void Render();
+	void SetAssociatedScene(Scene* pAssociatedScene) {m_pAssociatedScene = pAssociatedScene;}
+
+	//call this method to render and display an image of the scene
+	void Render();
 };
 
 

@@ -25,7 +25,8 @@ private:
 public:
     GLList(GLuint DisplayList)  { m_DisplayList = DisplayList; }
     void ExecuteList()          { glCallList(m_DisplayList); }
-    GLuint GetList()            { return m_DisplayList; }
+//    GLuint GetList()            { return m_DisplayList; }
+	~GLList() {glDeleteLists( m_DisplayList, 1);}
 };
 
 #endif

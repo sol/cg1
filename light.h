@@ -30,7 +30,7 @@ private:
 
     //this static members are used to map the gl-internal lights to objets.
     static bool* m_pIsAssigned;
-    static int m_MaxNrOfLights;
+    static GLint m_MaxNrOfLights;
 
 protected:
     bool m_IsValid;

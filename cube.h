@@ -17,13 +17,15 @@
 #include "meshobject.h"
 
 
-namespace MeshObjects {
+namespace MeshObjects
+{
 
 
 //this class provides MeshObject with a constructor appropriate for cubes
-class Cube : public MeshObject {
+class Cube : public MeshObject
+{
 public:
-    Cube( GLdouble Height, GLdouble Width, GLdouble Depth, GLenum Mode = GL_TRIANGLES );
+	Cube( GLdouble Height = 1.0, GLdouble Width = 1.0, GLdouble Depth = 1.0, GLenum Mode = GL_TRIANGLES );
 };
 
 

@@ -24,13 +24,14 @@ namespace MeshObjects {
 
 class MeshObject : public WorldObject {
 private:
-    virtual void DefineObject();
 
 protected:
     GLList* m_pGLList;
     Material* m_pMaterial;
 
     void SetGLList(GLList* pGLList)                      {m_pGLList = pGLList;}
+
+    virtual void DefineObject();
 
 public:
     MeshObject();

@@ -16,24 +16,32 @@
 
 #include "animatedobject.h"
 #include "rotation.h"
-#include <GL/gl.h>
+
+#if defined linux
+#include <GL/glu.h>
+#endif
+
+#if defined osx
+#include <GLUT/glut.h>
+#endif
 
 #define OSCIL_SINUS 0
 #define OSCIL_LINEAR 1
 
-namespace Transformations{
+namespace Transformations
+{
 
-class OscillatingRotation : public AnimatedObject, public Rotation {
+class OscillatingRotation : public AnimatedObject, public Rotation
+{
 public:
-    OscillatingRotation(double Startangle, double Stopangle, double Speed, GLfloat X, GLfloat Y, GLfloat Z, double Start=0,  int type=OSCIL_LINEAR):
-        Rotation(0, X, Y, Z), m_lfStartAngle(Startangle), m_lfStopAngle(Stopangle), m_lfSpeed(Speed), m_lfProgress(Start), m_iType(type){}
-        
-    int Animate();
-private:
-    double m_lfStartAngle, m_lfStopAngle, m_lfSpeed, m_lfProgress;
-    int m_iType;
-    
+	OscillatingRotation(double Startangle, double Stopangle, double Speed, GLfloat X, GLfloat Y, GLfloat Z, double Start=0,  int type=OSCIL_LINEAR);
 
+	//        
+	void OnAnimate(unsigned int TimeToAnimate);
+private:
+	double m_lfStartAngle, m_lfStopAngle, m_lfSpeed, m_lfProgress;
+	int m_iType;
 };
+
 }
 #endif

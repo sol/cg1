@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   animationcontroller.cpp - (c) 2003, 2004 by The Marrowmoon Group       //
+//   torus.cpp - (c) 2003 by The Marrowmoon Group                           //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -11,48 +11,28 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-#include "animationcontroller.h"
+#include "torus.h"
 
 
 
-//constructor
-AnimationController::AnimationController()
+namespace MeshObjects
 {
-	m_u32InternalTime = SDL_GetTicks();
-	m_IsPause = false;
+
+Torus::Torus(GLdouble InnerRadius, GLdouble OuterRadius, GLint SidesPerSection, GLint Sections)
+{
+    m_InnerRadius = InnerRadius;
+    m_OuterRadius = OuterRadius;
+    m_SidesPerSection = SidesPerSection;
+    m_Sections =Sections;
 }
 
 
-
-void AnimationController::Animate()
+void Torus::DefineObject()
 {
-	if (!m_IsPause)
-	{
-		Uint32 OldInternalTime = m_u32InternalTime;
-		m_u32InternalTime = SDL_GetTicks();
-
-		std::vector<AnimatedObject*>::iterator it;
-
-		//call Animate() for all associated objects
-		for (it = m_AnimatedObjects.begin(); it < m_AnimatedObjects.end(); it++)
-			(*it)->OnAnimate(m_u32InternalTime - OldInternalTime);
-	}
+    MeshObject::DefineObject();
+    //send the mesh to the pipeline
+    glutSolidTorus(m_InnerRadius, m_OuterRadius, m_SidesPerSection, m_Sections);
 }
 
 
-
-void AnimationController::Unpause()
-{
-	m_IsPause = false;
-	m_u32InternalTime = SDL_GetTicks();
-}
-
-
-void AnimationController::TogglePause()
-{
-	if(m_IsPause)
-		Unpause();
-
-	else
-		Pause();
 }

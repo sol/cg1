@@ -14,21 +14,25 @@
 #include "animatedrotation.h"
 
 
-namespace Transformations {
+
+namespace Transformations
+{
 
 
-AnimatedRotation::AnimatedRotation(GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z, GLdouble DeltaAngle) : Rotation(Angle, X, Y, Z), m_DeltaAngle( DeltaAngle ) {
-    //do nut'n    
+
+AnimatedRotation::AnimatedRotation(GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z, GLdouble AngularVelocity) : Rotation(Angle, X, Y, Z), m_AngularVelocity(AngularVelocity)
+{}
+
+
+
+void AnimatedRotation::OnAnimate(unsigned int TimeToAnimate)
+{
+	double DeltaAngel = m_AngularVelocity * double(TimeToAnimate) / 1000.0;
+	m_Angle += DeltaAngel;
+	while (m_Angle > 360)
+		m_Angle -= 360;
 }
 
-
-int AnimatedRotation::Animate(){
-    m_Angle += m_DeltaAngle;
-    if( m_Angle > 360 )
-        m_Angle -= 360;
-
-    return 1;
-}
 
 
 }

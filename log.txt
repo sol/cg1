@@ -1,2 +1,0 @@
-mkl 21.06.2003: added dummy windows.h, it is included in world.h
-mkl 01.07.2003: some optimizations for the presentation (mouse cursor, light)

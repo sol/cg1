@@ -12,12 +12,13 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "light.h"
+#include "sphere.h"
 
 namespace Lights {
     
 
 bool* Light::m_pIsAssigned = NULL;
-int Light::m_MaxNrOfLights = 0;
+GLint Light::m_MaxNrOfLights = 0;
 
 
 Light::Light(GLfloat red, GLfloat green, GLfloat blue) {
@@ -42,13 +43,16 @@ Light::Light(GLfloat red, GLfloat green, GLfloat blue) {
         m_Light = GL_LIGHT0 + i;
         m_IsValid = true;
 
+
         //set glLight prameters
         SetColor(red, green, blue);
         m_aPosition[0] = 0.0; m_aPosition[1] = 0.0; m_aPosition[2] = 1.0; m_aPosition[3] = 0.0;
         m_aSpotDirection[0] = 0.0; m_aSpotDirection[1] = 0.0; m_aSpotDirection[2] = -1.0;
         m_SpotExponent = 0.0;
         m_SpotCutoff = 180.0;
-
+        m_ConstantAttenuation = 1.0;
+        m_LinearAttenuation = 0.0;
+        m_QuadraticAttenuation = 0.0;
 
         DefineObject();
         Enable();

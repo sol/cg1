@@ -25,7 +25,7 @@ MeshObject::MeshObject() {
 
 MeshObject::~MeshObject(){
     if( m_pGLList )
-        glDeleteLists( m_pGLList->GetList(), 1);
+//        glDeleteLists( m_pGLList->GetList(), 1);
         delete m_pGLList;
 
     if( m_pMaterial )

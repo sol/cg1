@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   animatedobject.h - (c) 2003 by The Marrowmoon Group                    //
+//   animatedobject.h - (c) 2003, 2004 by The Marrowmoon Group              //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -15,10 +15,15 @@
 #define ANIMATEDOBJECT_H
 
 
-class AnimatedObject {
+
+//to use the AnimationController with a given class, it has to implement this interface
+class AnimatedObject
+{
 public:
-    virtual ~AnimatedObject() {}
-    virtual int Animate() = 0;
+	//TimeToAnimate in ms
+	virtual void OnAnimate(unsigned int TimeToAnimate) = 0;
 };
+
+
 
 #endif

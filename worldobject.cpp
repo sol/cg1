@@ -27,23 +27,24 @@ WorldObject::~WorldObject() {
 }
 
 
-void WorldObject::Execute() {
-    //apply transformations
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
-    
-    std::vector<Transformation*>::reverse_iterator TransformationIterator;
-    for (TransformationIterator = m_Transformations.rbegin(); TransformationIterator < m_Transformations.rend(); TransformationIterator++)
-        (*TransformationIterator)->Apply();
+void WorldObject::Execute()
+{
+	//apply transformations
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
 
-    //send the data of (*this) to the pipeline
-    DefineObject();
-    
-    //execute all subobjects
-    std::vector<WorldObject*>::iterator ObjectIterator;
-    for (ObjectIterator = m_SubObjects.begin(); ObjectIterator < m_SubObjects.end(); ObjectIterator++)
-        (*ObjectIterator)->Execute();
+	std::vector<Transformation*>::reverse_iterator TransformationIterator;
+	for (TransformationIterator = m_Transformations.rbegin(); TransformationIterator < m_Transformations.rend(); TransformationIterator++)
+		(*TransformationIterator)->Apply();
 
-    //undo transformations
-    glPopMatrix();
+	//send the data of (*this) to the pipeline
+	DefineObject();
+
+	//execute all subobjects
+	std::vector<WorldObject*>::iterator ObjectIterator;
+	for (ObjectIterator = m_SubObjects.begin(); ObjectIterator < m_SubObjects.end(); ObjectIterator++)
+		(*ObjectIterator)->Execute();
+
+	//undo transformations
+	glPopMatrix();
 }

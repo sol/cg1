@@ -22,17 +22,24 @@
 namespace Transformations {
     
 
-class AnimatedRotation : public Rotation, public AnimatedObject {
+class AnimatedRotation : public Rotation, public AnimatedObject
+{
 private:
-    GLdouble m_DeltaAngle;
+	GLdouble m_AngularVelocity;
 
 public:
-    AnimatedRotation(GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z, GLdouble DeltaAngle);
-    int Animate();
+
+	//AngularVelocity has to be given in deg/s
+	AnimatedRotation(GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z, GLdouble AngularVelocity);
+
+	//implementation of the interface AnimatedObject
+	void OnAnimate(unsigned int TimeToAnimate);
 
 };
 
 
 }
+
+
 
 #endif

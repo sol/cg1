@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   animationcontroller.h - (c) 2003 by The Marrowmoon Group               //
+//   animationcontroller.h - (c) 2003, 2004 by The Marrowmoon Group         //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -18,24 +18,38 @@
 #include "animatedobject.h"
 
 
-//an advanced container for AnimatedObjects
-class AnimationController {
+
+//
+class AnimationController
+{
 private:
-    std::vector<AnimatedObject*> m_AnimatedObjects;
-    Uint32 m_u32InternalTime;
-    bool m_iPause;
+	//all associated objects are kept in this vector
+	std::vector<AnimatedObject*> m_AnimatedObjects;
+
+	//an helper, to determine how much time has pased
+	Uint32 m_u32InternalTime;
+
+	bool m_IsPause;
     
 public:
-    AnimationController();
-    
-    int Animate();  //calls Animate() of all associated objects as often as necessary
-    int OneStep();  //calls Animate() of all associated objects one time
-    bool Pause();
-    bool Unpause();
-    bool TogglePause();
+	//constructor
+	AnimationController();
 
-    void AddObject(AnimatedObject* ObjectToAdd); //associates an object witg the AnimationController
-    void DeleteAllObjects(); //unassociates all objects
+	//calls Animate() of all associated objects
+	void Animate();
+
+	//
+	void Pause() {m_IsPause = true;}
+	void Unpause();
+	void TogglePause();
+
+	//associates an object with the AnimationController
+	void AddObject(AnimatedObject* pObjectToAdd) {m_AnimatedObjects.push_back(pObjectToAdd);}
+
+	//unassociates all objects
+	void DeleteAllObjects() {m_AnimatedObjects.clear();}
 };
+
+
 
 #endif

@@ -14,18 +14,36 @@
 #include "oscillatingrotation.h"
 #include "math.h"
 
-using namespace Transformations;
+namespace Transformations
+{
 
-int OscillatingRotation::Animate(){
+OscillatingRotation::OscillatingRotation(double Startangle, double Stopangle, double Speed, GLfloat X, GLfloat Y, GLfloat Z, double Start,  int type):
+	Rotation(0, X, Y, Z),
+	m_lfStartAngle(Startangle),
+	m_lfStopAngle(Stopangle),
+	m_lfSpeed(Speed),
+	m_lfProgress(Start),
+	m_iType(type)
+{}
+
+
+void OscillatingRotation::OnAnimate(unsigned int TimeToAnimate)
+{
+	double delta = double(TimeToAnimate) / 10.0 * m_lfSpeed;
+	m_lfProgress += delta;
+
     if( m_iType == OSCIL_LINEAR ){
-        m_lfProgress += m_lfSpeed;
         if( m_lfProgress > 1 || m_lfProgress < 0 ) m_lfSpeed *= -1;
         m_Angle = m_lfStartAngle + ( m_lfStopAngle - m_lfStartAngle ) * m_lfProgress;
     }
-    if( m_iType == OSCIL_SINUS ){
-        m_lfProgress += m_lfSpeed;
-        if( m_lfProgress > 1 ) m_lfProgress = 0;
-        m_Angle = m_lfStartAngle + ( m_lfStopAngle - m_lfStartAngle ) * ( sin(m_lfProgress * 6.28) + 1 ) / 2;
+    if( m_iType == OSCIL_SINUS )
+    {
+		while( m_lfProgress > 1 )
+			m_lfProgress -= 1;
+
+		m_Angle = m_lfStartAngle + ( m_lfStopAngle - m_lfStartAngle ) * ( sin(m_lfProgress * 6.28) + 1 ) / 2;
     }
-    return 0;
 }
+
+}
+

@@ -21,7 +21,7 @@ Cube::Cube( GLdouble Height, GLdouble Width, GLdouble Depth, GLenum Style )
 {
     GLuint list = glGenLists(1);
     glNewList(list, GL_COMPILE);
-    
+
     GLdouble v0[] = { 0,      0,      Depth };
     GLdouble v1[] = { Height, 0,      Depth };
     GLdouble v2[] = { Height, Width,  Depth };

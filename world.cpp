@@ -21,7 +21,6 @@ World::World() {
         SDL_Quit();
         exit(1);
     }
-	SDL_ShowCursor( SDL_DISABLE );
 }
 
 

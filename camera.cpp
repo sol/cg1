@@ -19,9 +19,9 @@
 #include "rotation.h"
 #include "translation.h"
 
-Camera::Camera() {
-    m_pOpenGLContext = NULL;
-    m_pAssociatedScene = NULL;
+Camera::Camera()
+{
+	m_pAssociatedScene = NULL;
 
     //initialise OpenGL
     const SDL_VideoInfo* VideoInfo = SDL_GetVideoInfo();
@@ -31,7 +31,7 @@ Camera::Camera() {
     int width = 1024;
     int height = 768;
 
-    if( SDL_SetVideoMode( width, height, bpp, SDL_OPENGL | SDL_FULLSCREEN ) == 0)
+    if( SDL_SetVideoMode( width, height, bpp, SDL_OPENGL /*| SDL_FULLSCREEN*/ ) == 0)
     {
         fprintf( stderr, "Video mode set failed: %s\n", SDL_GetError() );
         SDL_Quit();
@@ -69,41 +69,46 @@ Camera::Camera() {
 
     glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, 0);
 
-    //FOG
+	//FOG
+/*	glEnable(GL_FOG);
 
-//    glEnable(GL_FOG);
-//
-//    GLfloat rgba[] = {1, 1, 1, 1};
-//    glFogfv(GL_FOG_COLOR, rgba);
-//
-//
-//    glFogi(GL_FOG_MODE, GL_LINEAR);
-//    glFogf(GL_FOG_DENSITY, .5);
-//
-//    glFogf(GL_FOG_START, .5);
-//    glFogf(GL_FOG_END, .6);
+	GLfloat rgba[] = {1, 1, 1, 1};
+	glFogfv(GL_FOG_COLOR, rgba);
 
-//    glHint(GL_FOG_HINT, GL_Fastest|FL_NICEST|GL_DONT_CARE);
- 
-    gluPerspective(60.0, ratio, 1.0, 1024.0);
+	glFogi(GL_FOG_MODE, GL_LINEAR);
+	glFogf(GL_FOG_DENSITY, .5);
+
+	glFogf(GL_FOG_START, .5);
+	glFogf(GL_FOG_END, .6);
+
+	glHint(GL_FOG_HINT, GL_FASTEST|GL_NICEST|GL_DONT_CARE);*/
+
+	gluPerspective(60.0, ratio, 1.0, 1024.0);
 }
 
 
 
-void Camera::Render() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
+//call this method to render and display an image of the scene
+void Camera::Render()
+{
+	//cleare the screen (or more accurate the buffer)
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
 
-    std::vector<Transformation*>::iterator it;
-    for( it = m_Transformations.begin(); it < m_Transformations.end(); it++)
-        (*it)->InverseApply();    
+	//apply transformations
+	glPushMatrix();
 
-    if ( m_pAssociatedScene )
-        m_pAssociatedScene->ExecuteAllObjects();
+	std::vector<Transformation*>::iterator it;
+	for( it = m_Transformations.begin(); it < m_Transformations.end(); it++)
+		(*it)->InverseApply();    
 
-    glPopMatrix();
+	//send the scenes geometry to the pipeline
+	if ( m_pAssociatedScene )
+		m_pAssociatedScene->ExecuteAllObjects();
 
+	//undo transformations
+	glPopMatrix();
 
-    SDL_GL_SwapBuffers();
+	//show the rendered scene(we use double buffering)
+	SDL_GL_SwapBuffers();
 }

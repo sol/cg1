@@ -14,10 +14,19 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include <windows.h> //for windows compatibility there is a dummy windows.h used by other os'es
-#include <SDL.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+//#define osx
+
+#include <SDL/SDL.h>
+
+#if defined osx
+#include <GLUT/glut.h>
+#endif
+
+
+#if defined linux
+#include <GL/glut.h>
+#endif
+
 #include <vector>
 
 

@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
-//   rotation.h - (c) 2003 by The Marrowmoon Group                          //
+//   rotation.h - (c) 2003, 2004 by The Marrowmoon Group                    //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //
@@ -18,22 +18,25 @@
 #include "transformation.h"
 
 
-namespace Transformations {
+namespace Transformations
+{
 
 
-class Rotation : public Transformation {
+class Rotation : public Transformation
+{
 protected:
-    GLfloat m_Angle;
+	GLfloat m_Angle;
 
-    //This values define a vector used as rotation axis
-    GLfloat m_X;
-    GLfloat m_Y;
-    GLfloat m_Z;
+	//This values define a vector used as rotation axis
+	GLfloat m_X;
+	GLfloat m_Y;
+	GLfloat m_Z;
 
 public:
-    Rotation(GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z) : m_Angle(Angle), m_X(X), m_Y(Y), m_Z(Z) {}
-    void Apply() { glRotatef( m_Angle, m_X, m_Y, m_Z ); }
-    void InverseApply(){ glRotatef( -m_Angle, m_X, m_Y, m_Z ); }
+	Rotation(GLfloat Angle, GLfloat X, GLfloat Y, GLfloat Z) : m_Angle(Angle), m_X(X), m_Y(Y), m_Z(Z) {}
+	void Apply() { glRotatef( m_Angle, m_X, m_Y, m_Z ); }
+	void InverseApply(){ glRotatef( -m_Angle, m_X, m_Y, m_Z ); }
+
 };
 
 
