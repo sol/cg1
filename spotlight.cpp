@@ -1,30 +1,23 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                          //
+//   spotlight.cpp - (c) 2003 by The Marrowmoon Group                       //
+//                                                                          //
+//////////////////////////////////////////////////////////////////////////////
+//                                                                          //
+//   This program is free software; you can redistribute it and/or modify   //
+//   it under the terms of the GNU General Public License as published by   //
+//   the Free Software Foundation; either version 2 of the License, or      //
+//   (at your option) any later version.                                    //
+//                                                                          //
+//////////////////////////////////////////////////////////////////////////////
 
 #include "spotlight.h"
 
+
+
 SpotLight::SpotLight(GLfloat Angle) {
     if(m_IsValid) {
-        GLfloat Position[] = { 0.0, 0.0, 0.0, 1.0};
-        glLightfv(m_Light, GL_POSITION, Position);
-
-        //set as spot light
-        glLightf(m_Light, GL_SPOT_CUTOFF, Angle);
-        glLightf(m_Light, GL_SPOT_EXPONENT, 0);
-        
-        
-        GLfloat Direction[] = { 0.0, 0.0, -1.0 };
-        glLightfv(m_Light, GL_SPOT_DIRECTION, Direction);
+        m_aPosition[0] = 0.0; m_aPosition[1] = 0.0; m_aPosition[2] = 0.0; m_aPosition[3] = 1.0;
+        m_SpotCutoff = Angle;
     }
 }
-
-
-void SpotLight::DefineObject(){
-    if(m_IsValid) {
-        GLfloat Position[] = { 0.0, 0.0, 0.0, 1.0 };
-        glLightfv(m_Light, GL_POSITION, Position);
-        GLfloat Direction[] = { 0.0, 0.0, -1.0 };
-        glLightfv(m_Light, GL_SPOT_DIRECTION, Direction);
-    }
-}
-
-
-

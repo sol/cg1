@@ -88,6 +88,7 @@ int main(int argc, char** argv) {
 
 //    SpotLight light1(30);
     PointLight light1;
+    light1.SetColor(1, 1, 1, 1);
     Material *mat;
 //    mat.SetColor(.2, .2, .3);
     Sphere* sph1;
