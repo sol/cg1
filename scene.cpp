@@ -16,9 +16,10 @@
 #include "meshobject.h"
 
 
-void Scene::AddCamera(Camera* pCamera) {
-    m_Cameras.push_back(pCamera);
+void Scene::SetCamera(Camera* pCamera) {
+    m_WorldObjects.push_back(pCamera);
     pCamera->SetAssociatedScene(this);
+    m_pActiveCamera = pCamera;  
 }
 
 
@@ -37,5 +38,9 @@ Scene::~Scene(){
 
     for (it = m_WorldObjects.begin(); it < m_WorldObjects.end(); it++)
         (*it)->Execute();
+}
+
+void Scene::Render(){
+    m_pActiveCamera->Render();
 }
     

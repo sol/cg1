@@ -21,14 +21,16 @@
 
 class World {
 private:
-    std::vector<Scene*> m_Scenes;
+//    std::vector<Scene*> m_Scenes;
 
+    Scene* m_pScene;
+    
 public:
     World();
     ~World();
 
-    void AddScene(Scene* pScene) {m_Scenes.push_back(pScene);}
-
+//    void AddScene(Scene* pScene) { m_Scenes.push_back(pScene); }
+    void SetScene(Scene* pScene) { m_pScene = pScene; }
 };
 
 

@@ -34,19 +34,26 @@
 #include "animatedtranslation.h"
 
 
+int TOGGLE_PAUSE = SDLK_SPACE;
+int SCENE1 = SDLK_1;
+int SCENE2 = SDLK_2;
+int SCENE3 = SDLK_3;
+int SCENE4 = SDLK_4;
+int SCENE5 = SDLK_5;
+
+
 int handle_key_down(SDL_keysym* keysym) {
     
     if (keysym->sym == SDLK_ESCAPE) {
         SDL_Quit();
         exit(0);
     }
-    if (keysym->sym == SDLK_SPACE){
-        return 1;    
-    }//PROV Pause
-
-    return 0;
+        return keysym->sym;    
 }
 
+
+
+    
 
 
 int process_events(void) {
@@ -66,25 +73,59 @@ int process_events(void) {
     return 0;
 }
 
-#define XX 50
-#define YY 50
-#define ZZ 50
+
+Scene* Scene1(AnimationController* MyAnimationController);
+Scene* Scene2(AnimationController* MyAnimationController);
+Scene* Scene3(AnimationController* MyAnimationController);
+Scene* Scene4(AnimationController* MyAnimationController);
+Scene* Scene5(AnimationController* MyAnimationController);
+
 
 int main(int argc, char** argv) {
 
     World MyWorld;
-    Scene MyScene;
-    Camera MyCamera; 
-
-    MyScene.AddCamera(&MyCamera);
-    MyWorld.AddScene(&MyScene);
-
     AnimationController MyAnimationController;
-    MyCamera.AddTranslation(1, 1, 10);
+    Scene* MyScene = Scene2( &MyAnimationController );
+//    MyWorld.AddScene( MyScene );
 
-    Grid grid(500, 500, 100, 100);
-    grid.AddRotation(90, 1, 0, 0);
-    MyScene.AddWorldObject( &grid );
+    int key;
+    
+    while(1)
+    {
+        MyAnimationController.Animate();
+        key = process_events();
+        if( key == TOGGLE_PAUSE ) MyAnimationController.TogglePause();
+        if( key == SCENE1 ){ delete MyScene; MyScene = Scene1( &MyAnimationController ); } 
+        if( key == SCENE2 ){ delete MyScene; MyScene = Scene2( &MyAnimationController ); } 
+        if( key == SCENE3 ){ delete MyScene; MyScene = Scene3( &MyAnimationController ); } 
+        if( key == SCENE4 ){ delete MyScene; MyScene = Scene4( &MyAnimationController ); } 
+        if( key == SCENE5 ){ delete MyScene; MyScene = Scene5( &MyAnimationController ); } 
+
+        MyScene->Render();
+
+    }
+
+    return 0;
+
+
+}
+
+
+
+Scene* Scene1(AnimationController* MyAnimationController){
+    int XX = 50;
+    int YY = 50;
+    int ZZ = 50;
+    Scene *MyScene = new Scene;
+    Camera *MyCamera = new Camera;
+
+    MyScene->SetCamera( MyCamera );
+
+    MyCamera->AddTranslation(1, 1, 10);
+
+    Grid *grid = new Grid(500, 500, 100, 100);
+    grid->AddRotation(90, 1, 0, 0);
+    MyScene->AddWorldObject( grid );
 
     Rotation *rot1 = new Rotation(1, 1, 0, 0);
 
@@ -106,21 +147,52 @@ int main(int argc, char** argv) {
         sph1->SetMaterial( mat );
         aniRot = new AnimatedRotation( rand() % 360, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand()%10/10.0)-.5, (rand() % 10 / 10.0)+.1 );
         sph1->AddTransform( aniRot );
-        MyAnimationController.AddObject( aniRot );
-        MyScene.AddWorldObject( sph1 );
+        MyAnimationController->AddObject( aniRot );
+        MyScene->AddWorldObject( sph1 );
         if( i == 0 )
             sph1->AddSubObject( light1 );
             sph1->AddTransform( rot1 );
     }
-    while(1)
-    {
-        MyAnimationController.Animate();
-        if( process_events() == 1 ) MyAnimationController.TogglePause();
-        MyCamera.Render();
-
-    }
-
-    return 0;
+    return MyScene;
+}
 
 
+Scene* Scene2(AnimationController* MyAnimationController){
+    Scene *MyScene = new Scene;
+    Camera *MyCamera = new Camera;
+
+    MyScene->SetCamera( MyCamera );
+    MyCamera->AddTranslation( 0, 0, 10 );
+
+    Disk *disk1 = new Disk( 3, 4, 20, 5, GLU_FILL );
+    Material *mat1 = new Material();
+    mat1->SetColor(.2, .2, .3);
+    disk1->SetMaterial( mat1 );
+    MyScene->AddWorldObject( disk1 );
+    
+    return MyScene;
+}
+Scene* Scene3(AnimationController* MyAnimationController){
+    Scene *MyScene = new Scene;
+    Camera *MyCamera = new Camera;
+
+    MyScene->SetCamera( MyCamera );
+
+    return MyScene;
+}
+
+Scene* Scene4(AnimationController* MyAnimationController){
+    Scene *MyScene = new Scene;
+    Camera *MyCamera = new Camera;
+
+    MyScene->SetCamera( MyCamera );
+    return MyScene;
+}
+
+Scene* Scene5(AnimationController* MyAnimationController){
+    Scene *MyScene = new Scene;
+    Camera *MyCamera = new Camera;
+
+    MyScene->SetCamera( MyCamera );
+    return MyScene;
 }

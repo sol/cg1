@@ -29,7 +29,6 @@ private:
     
 public:
     AnimationController();
-
 //    int Control() {return Animate();}
     int Animate();
     int Pause();
