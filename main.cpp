@@ -518,10 +518,10 @@ Scene* Scene6()
 	Camera *MyCamera = new Camera;
 
 	//load the mesh
-//	LoadableMesh *MyMesh = new LoadableMesh("alien.txt");
-//	LoadableMesh *MyMesh = new LoadableMesh("ritter-steht.txt");
-	LoadableMesh *MyMesh = new LoadableMesh("ritter-knie.txt");
-//	LoadableMesh *MyMesh = new LoadableMesh("oger.txt");
+//	LoadableMesh *MyMesh = new LoadableMesh("models/alien.txt");
+//	LoadableMesh *MyMesh = new LoadableMesh("models/ritter-steht.txt");
+	LoadableMesh *MyMesh = new LoadableMesh("models/ritter-knie.txt");
+//	LoadableMesh *MyMesh = new LoadableMesh("models/oger.txt");
 
 	
 	MyMesh->SetMaterial(.5, .5, .5);
