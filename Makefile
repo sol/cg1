@@ -1,6 +1,9 @@
+SOURCES:=$(wildcard *.cpp)
+HEADERS:=$(wildcard *.h)
+OBJECTS:=$(SOURCES:%.cpp=%.o)
 
-all:
-	g++ *.cpp `sdl-config --cflags --libs` -lglut -omain
+main: $(OBJECTS) $(HEADERS)
+	g++ `sdl-config --cflags --libs` -lglut -omain $(OBJECTS)
 
 publish:
 	bzr export cg1.tar.gz
@@ -8,4 +11,4 @@ publish:
 	bzr push sftp://gilmore/home/sol/public_html/sources/cg1
 
 clean:
-	rm main
+	rm main $(OBJECTS)
