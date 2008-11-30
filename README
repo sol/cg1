@@ -5,7 +5,10 @@ transformations.
 
 Authors: Markus Klinik and Simon Hengel
 
-Dependencies: libsdl-dev freeglut3-dev
+Dependencies: libsdl-dev freeglut3-dev cmake
+
+[Re]build Makefile:
+$ cmake -G "Unix Makefiles" .
 
 Build and run:
 $ make && ./main
