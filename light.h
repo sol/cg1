@@ -34,6 +34,40 @@ namespace Lights {
  */
 class Light : public WorldObject 
 {
+public:
+	/**
+	 * \brief OpenGL implementation dependent maximum number of lights
+	 *
+	 * Create at least one light to get a valid value.
+	 */
+    static int GetMaxNrOfLights() {return m_MaxNrOfLights;}
+
+	/**
+	 * \brief Constructor
+	 *
+	 * \param red RGB color component
+	 * \param green RGB color component
+	 * \param blue RGB color component
+	 */
+    Light(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
+
+    virtual ~Light();
+
+	/**
+	 * \brief Switch light on
+	 */
+    void Enable()  {if (m_IsValid) glEnable(m_Light);}
+
+	/**
+	 * \brief Switch lighth off
+	 */
+    void Disable() {if (m_IsValid) glDisable(m_Light);}
+
+	/**
+	 * \brief Accessor for light color
+	 */
+    void SetColor(GLfloat red, GLfloat green, GLfloat blue);
+
 private:
     virtual void DefineObject();
 
@@ -56,18 +90,6 @@ protected:
     GLfloat m_ConstantAttenuation;
     GLfloat m_LinearAttenuation;
     GLfloat m_QuadraticAttenuation;
-
-public:
-	//you have to create at least one light to get a valid value
-    static int GetMaxNrOfLights() {return m_MaxNrOfLights;}
-
-    Light(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
-    virtual ~Light();
-
-    void Enable()  {if (m_IsValid) glEnable(m_Light);}
-    void Disable() {if (m_IsValid) glDisable(m_Light);}
-
-    void SetColor(GLfloat red, GLfloat green, GLfloat blue);
 };
 
 

@@ -25,6 +25,7 @@
 #include "plane.h"
 #include "mazemap.h"
 
+#include "animatedlight.h"
 
 int TOGGLE_PAUSE = SDLK_SPACE;
 int SCENE1 = SDLK_1;
@@ -76,13 +77,14 @@ Scene* Scene4();
 Scene* Scene5();
 Scene* Scene6();
 Scene* Scene7();
+Scene* MklsPlayground();
 
 
 
 int main(int argc, char** argv)
 {
 	World MyWorld;
-	Scene* MyScene = Scene6();
+	Scene* MyScene = MklsPlayground();
 
 	int key;
 
@@ -311,7 +313,8 @@ Scene* Scene2(){
 /**
  * \brief A small bright sphere orbiting a big one
  */
-Scene* Scene3(){
+Scene* Scene3()
+{
     Scene *MyScene = new Scene;
     Camera *MyCamera = new Camera;
     
@@ -594,6 +597,64 @@ Scene* Scene7()
 	//return the Scene object
 	return MyScene;
 } */
+
+Scene* MklsPlayground()
+{
+    Scene *MyScene = new Scene;
+    Camera *MyCamera = new Camera;
+    
+    MyCamera->AddRotation(-20, 1, 0, 0);
+    MyCamera->AddTranslation(0, 20, 40);    
+
+    
+    Grid *grid = new Grid(100, 100, 100, 100);
+    grid->SetMaterial(.1, .1, .1);
+    MyScene->AddWorldObject( grid );
+    grid->AddRotation(90, 1, 0, 0);
+    grid->AddRotation(90, 0, 1, 0);
+
+    Sphere* sphere = new Sphere(4, 30, 30);
+    sphere->AddTranslation(0, 5, 0);
+    sphere->SetMaterial(.5, .5, .5);
+    MyScene->AddWorldObject( sphere );
+
+    AnimatedRotation *rot1 = new AnimatedRotation(0, 0, 1, 0, 100.0),
+                     *rot2 = new AnimatedRotation(0, 0, 1, 0, 100.0),
+                     *rot3 = new AnimatedRotation(0, 0, 1, 0, 100.0),
+                     *rot4 = new AnimatedRotation(0, 0, 1, 0, 100.0);
+    MyScene->GetAnimationController()->AddObject( rot1 );
+    MyScene->GetAnimationController()->AddObject( rot2 );
+    MyScene->GetAnimationController()->AddObject( rot3 );
+    MyScene->GetAnimationController()->AddObject( rot4 );
+    
+    Sphere* sphere2 = new Sphere(.5, 20, 20);
+    sphere2->SetMaterial(1, 1, 1);
+    MyScene->AddWorldObject( sphere2 );
+    sphere2->AddTranslation(0, 4, 7);
+    sphere2->AddTransformation( rot1 );
+
+    Sphere* sphere3 = new Sphere(.5, 20, 20);
+    sphere3->SetMaterial(1, 1, 1);
+    MyScene->AddWorldObject( sphere3 );
+    sphere3->AddTranslation(0, 4, -7);
+    sphere3->AddTransformation( rot2 );
+
+    AnimatedLight *light1 = new AnimatedLight(0.25);
+    MyScene->GetAnimationController()->AddObject( light1 );
+    MyScene->AddWorldObject( light1 );
+    light1->AddTranslation(0, 4, 7);
+    light1->AddTransformation( rot3 );
+
+    AnimatedLight *light2 = new AnimatedLight(0.75);
+    MyScene->GetAnimationController()->AddObject( light2 );
+    MyScene->AddWorldObject( light2 );
+    light2->AddTranslation(0, 4, -7);
+    light2->AddTransformation( rot4 );
+    
+    MyScene->SetCamera( MyCamera );
+
+    return MyScene;
+}
 
 /**
  * \}
