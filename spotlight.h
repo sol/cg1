@@ -19,13 +19,30 @@
 
 namespace Lights {
 
+/**
+ * \addtogroup Light
+ * \{
+ */
 
-//this class provides Light with a constructor appropriate for spot lights
+/**
+ * \brief A light source with position and direction. Think: desk lamp.
+ */
 class SpotLight : public Light {
 public:
+	/**
+	 * \brief Constructor
+	 *
+	 * \param Angle opening angle of the light cone
+	 * \param red RGB color component
+	 * \param green RGB color component
+	 * \param blue RGB color component
+	 */
     SpotLight(GLfloat Angle = 30, GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
 
+/**
+ * \}
+ */
 
 }
 

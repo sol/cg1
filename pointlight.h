@@ -19,13 +19,31 @@
 
 namespace Lights {
     
+/**
+ * \addtogroup Light
+ * \{
+ */
     
-//this class provides Light with a constructor appropriate for point lights
+/**
+ * \brief A light source featuring a position, emitting light in all
+ * directions. Think: light bulb.
+ */
 class PointLight : public Light {
 public:
+
+	/**
+	 * \brief Constructor
+	 *
+	 * \param red RGB color component
+	 * \param green RGB color component
+	 * \param blue RGB color component
+	 */
     PointLight(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
 
+/**
+ * \}
+ */
     
 }
 

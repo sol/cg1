@@ -19,12 +19,21 @@
 
 namespace Lights {
 
+/**
+ * \addtogroup Light
+ * \{
+ */
 
-//This is the base class of all lights, mapping the internal lights of the
-//OpenGL (GL_LIGHT0, GL_LIGHT1, ...) to Objects. If you create more objects of
-//the type Light then GL_MAX_LIGHTS you will get emty dummy-objects
-//(m_IsValid == false)
-class Light : public WorldObject {
+
+/**
+ * \brief Base class for lights
+ *
+ * Base class for all lights, wrapping OpenGL lights (GL_LIGHT0, GL_LIGHT1,
+ * ...). If you create more objects of the type Light then GL_MAX_LIGHTS you
+ * will get emty dummy-objects (m_IsValid == false) 
+ */
+class Light : public WorldObject 
+{
 private:
     virtual void DefineObject();
 
@@ -49,7 +58,8 @@ protected:
     GLfloat m_QuadraticAttenuation;
 
 public:
-    static int GetMaxNrOfLights() {return m_MaxNrOfLights;} //you have to create at least one light to get a valid value
+	//you have to create at least one light to get a valid value
+    static int GetMaxNrOfLights() {return m_MaxNrOfLights;}
 
     Light(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
     virtual ~Light();
@@ -59,6 +69,11 @@ public:
 
     void SetColor(GLfloat red, GLfloat green, GLfloat blue);
 };
+
+
+/**
+ * \}
+ */
 
 
 }

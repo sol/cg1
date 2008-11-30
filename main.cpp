@@ -11,72 +11,6 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
-
-
-//////////////////////////////////////////////////////////////////////////////
-//                                                                          //
-//   A simple OpenGL apllication using cpp and featuring hierarchical       //
-//   transformations.                                                       //
-//                                                                          //
-//////////////////////////////////////////////////////////////////////////////
-//                                                                          //
-//   Authors: Markus Klinik and Simon Hengel                                //
-//                                                                          //
-//////////////////////////////////////////////////////////////////////////////
-//                                                                          //
-//   You should have received a copy of the GNU General Public License      //
-//   with this software, if not it is availabel online at:                  //
-//                                                                          //
-//   http://www.gnu.org/copyleft/gpl.html                                   //
-//                                                                          //
-//   Make sure, you understand the license agreements before using this     //
-//   sofrware.                                                              //
-//                                                                          //
-//////////////////////////////////////////////////////////////////////////////
-//                                                                          //
-//   Comments of the Authors:                                               //
-//                                                                          //
-//   This program was written for a cg-course at the University of          //
-//   Applied Sciences Georg-Simon-Ohm Fachhochschule Nuernberg. As we       //
-//   think, it may be useful getting started with OpenGL. Feel free to      //
-//   use it for any purpose you like (in accordance with the GNU General    //
-//   Public License, see above).                                            //
-//                                                                          //
-//   The following features may be implemented in the future (as we think   //
-//   they coul be useful):                                                  //
-//                                                                          //
-//   - LoadableMesh, a MeshObject, which gets its geometry defenition       //
-//     from a file.                                                         //
-//                                                                          //
-//   -Additional materials like metal, plastic, glass, ...                  //
-//                                                                          //
-//   -Advanced scene-management by the World class.                         //
-//                                                                          //
-//   Known Bugs:                                                            //
-//                                                                          //
-//   - The hierarchical transformations work not in the right way, if       //
-//     the camera is a sub-object.                                          //
-//                                                                          //
-//   If you have implemented one of the above or other useful features or   //
-//   if you have done a bug fix, please let us know.                        //
-//                                                                          //
-//   Bug reports and additional comments are welcome.                       //
-//                                                                          //
-//   Contact: markus.klinik@gmx.de or simon.hengel@web.de                   //
-//                                                                          //
-//////////////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////////////
-//                                                                          //
-//   This program was extended by Simon Hengel in 2004.                     //
-//                                                                          //
-//   New features are:                                                      //
-//                                                                          //
-//   - A LoadableMesh class                                                 //
-//                                                                          //
-//////////////////////////////////////////////////////////////////////////////
-
 #include "world.h"
 
 #include "scene.h"
@@ -171,7 +105,14 @@ int main(int argc, char** argv)
 }
 
 
+/**
+ * \addtogroup Scenes
+ * \{
+ */
 
+/**
+ * \brief Randomly flying spheres
+ */
 Scene* Scene1(){
     int XX = 50;
     int YY = 50;
@@ -219,7 +160,9 @@ Scene* Scene1(){
     return MyScene;
 }
 
-/*************************************************************************************************/
+/**
+ * \brief A running human figure
+ */
 Scene* Scene2(){
     Scene *MyScene = new Scene;
     Camera *MyCamera = new Camera;
@@ -365,6 +308,9 @@ Scene* Scene2(){
 
 
 
+/**
+ * \brief A small bright sphere orbiting a big one
+ */
 Scene* Scene3(){
     Scene *MyScene = new Scene;
     Camera *MyCamera = new Camera;
@@ -435,6 +381,9 @@ Scene* Scene3(){
 
 
 
+/**
+ * \brief Random objects flying towards the camera
+ */
 Scene* Scene4(){
     Scene *MyScene = new Scene;
     Camera *MyCamera = new Camera;
@@ -498,6 +447,10 @@ Scene* Scene4(){
     return MyScene;
 }
 
+
+/**
+ * \brief Nothing yet
+ */
 Scene* Scene5()
 {
 	Scene *MyScene = new Scene;
@@ -509,6 +462,9 @@ Scene* Scene5()
 
 
 
+/**
+ * \brief A rotating LoadableMesh
+ */
 Scene* Scene6()
 {
 	//create a new Scene object
@@ -553,7 +509,9 @@ Scene* Scene6()
 
 
 
-//Scene7
+/**
+ * \brief A rotating cube
+ */
 Scene* Scene7()
 {
 	//create a new Scene object
@@ -636,3 +594,7 @@ Scene* Scene7()
 	//return the Scene object
 	return MyScene;
 } */
+
+/**
+ * \}
+ */

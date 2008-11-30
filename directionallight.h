@@ -19,12 +19,30 @@
 
 namespace Lights {
     
+/**
+ * \addtogroup Light
+ * \{
+ */
     
-//this class provides Light with a constructor appropriate for directional lights
+/**
+ * \brief An "infinite distant" light source. Light beams are parallel, coming
+ * from a direction. Think: the sun.
+ */
 class DirectionalLight : public Light {
 public:
+	/**
+	 * \brief Constructor
+	 *
+	 * \param red RGB color component
+	 * \param green RGB color component
+	 * \param blue RGB color component
+	 */
     DirectionalLight(GLfloat red = 1.0, GLfloat green = 1.0, GLfloat blue = 1.0);
 };
+
+/**
+ * \}
+ */
 
     
 }
