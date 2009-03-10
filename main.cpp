@@ -526,7 +526,7 @@ Scene* Scene7()
 	//load the mesh
 	Cube* MyCube = new Cube(10, 10, 10);
 	MyCube->AddTranslation(-5, -5, 0);
-//	MyCube->SetMaterial(.5, .5, .5);
+	MyCube->SetMaterial(.5, .5, .5);
 
 	//add the mesh to the scene
 	MyScene->AddWorldObject(MyCube);
