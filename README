@@ -1,58 +1,76 @@
-Copyright 2003, 2004, 2008 The Marrowmoon Group
 
-A simple OpenGL apllication using cpp and featuring hierarchical
-transformations.
+## `cg1`
 
-Authors: Markus Klinik and Simon Hengel
+`cg1` -- a simple OpenGL application written in C++ and featuring hierarchical
+transformations
 
-Dependencies: libsdl-dev freeglut3-dev cmake
 
-[Re]build Makefile:
-$ cmake -G "Unix Makefiles" .
+### Getting started
+
+Make sure you have the following dependencies installed on your computer:
+
+    cmake
+    libsdl-dev
+    freeglut3-dev
+
+Get the sources:
+    
+    git clone http://www.wiktory.org/~sol/code/cg1.git/
+
+[Re]build the `Makefile`:
+
+    cd cg1 && cmake -G "Unix Makefiles" .
 
 Build and run:
-$ make && ./main
 
-key bindings:
-<space>      stop animation
-<1> .. <7>   switch scene
-<ESC>        quit
+    make && ./main
+
+### Key bindings
+
+    <space>      stop animation
+    <1> .. <7>   switch scene
+    <ESC>        quit
 
 
-----------------------------------------------------------------------
-Comments from the authors:
+### Screenshots
 
-This program was written for a cg-course at the University of       
-Applied Sciences - Georg-Simon-Ohm Fachhochschule Nuernberg. As we    
-think, it may be useful getting started with OpenGL. Feel free to   
-use it for any purpose you like (in accordance with the GNU General 
-Public License, see COPYING).                                         
-                                                                    
+![screenshot of a knight](images/cg1_screenshot_knight.png)
+![screenshot of a sphere with two light sources](images/cg1_screenshot_lighting.png)
+![screenshot of animated spheres](images/cg1_screenshot_spheres.png)
+
+
+### History of `cg1`
+
+`cg1` has been written by Markus Klinik and Simon Hengel for a cg-course at
+[Georg-Simon-Ohm-Hochschule Nuernberg](http://www.fh-nuernberg.de/index.php) in
+2003. We think it may be useful getting started with OpenGL. Please feel free
+to use it for any purpose you like (in accordance with the license, see the
+accompanying LICENSE file).
+
 The following features may be implemented in the future (as we think
-they coul be useful):                                               
-                                                                    
-- LoadableMesh, a MeshObject, which gets its geometry defenition    
-  from a file.                                                      
-                                                                    
-- Additional materials like metal, plastic, glass, ...               
-                                                                    
-- Advanced scene-management by the World class.                      
-                                                                    
-Known Bugs:                                                         
-                                                                    
-- The hierarchical transformations work not in the right way, if    
-  the camera is a sub-object.                                       
-                                                                    
-If you have implemented one of the above or other useful features or
-if you have done a bug fix, please let us know.                     
-                                                                    
-Bug reports and additional comments are welcome.                    
-                                                                    
-Contact: markus.klinik@gmx.de or simon.hengel@web.de                
+they are useful and fun):
 
-----------------------------------------------------------------------
-This program was extended by Simon Hengel in 2004.                  
-                                                                    
-New features are:                                                   
-                                                                    
-- A LoadableMesh class                                              
+- `LoadableMesh`, a `MeshObject` that gets its geometry definition from a file
+
+- Additional materials like metal, plastic or glass
+
+- Advanced scene management within the `World` class
+
+
+`cg1` has been extended by Simon Hengel in 2004.  New features are:
+
+- A `LoadableMesh` class
+
+
+### Known bugs
+
+- The hierarchical transformations do not work in the intended, if
+  the camera is a subobject.
+
+
+### Authors
+* [Markus Klinik](mailto:markus.klinik@wiktory.org)
+* [Simon Hengel](mailto:simon.hengel@wiktory.org)
+
+Bug reports and comments are welcome.
+If you have implemented a feature or fixed a bug, please let us know.
