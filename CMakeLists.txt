@@ -18,5 +18,5 @@ endif (NOT OPENGL_FOUND)
 
 link_libraries(${GLUT_LIBRARIES} ${OPENGL_LIBRARIES} ${SDL_LIBRARY})
 
-file(GLOB SOURCES *.cpp)
+file(GLOB SOURCES src/*.cpp)
 add_executable(main ${SOURCES})
