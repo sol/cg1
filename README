@@ -7,7 +7,7 @@ transformations
 
 ### Getting started
 
-Make sure you have the following dependencies installed on your computer:
+Make sure you have the following dependencies installed on your system:
 
     cmake
     libsdl-dev
@@ -64,13 +64,13 @@ they are useful and fun):
 
 ### Known bugs
 
-- The hierarchical transformations do not work in the intended, if
+- The hierarchical transformations do not work as intended, if
   the camera is a subobject.
 
 
 ### Authors
-* [Markus Klinik](mailto:markus.klinik@wiktory.org)
-* [Simon Hengel](mailto:simon.hengel@wiktory.org)
+* Markus Klinik
+* Simon Hengel
 
 Bug reports and comments are welcome.
 If you have implemented a feature or fixed a bug, please let us know.
