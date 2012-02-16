@@ -1,9 +1,7 @@
+## cg1
 
-## `cg1`
-
-`cg1` -- a simple OpenGL application written in C++ and featuring hierarchical
+a simple OpenGL application written in C++ and featuring hierarchical
 transformations
-
 
 ### Getting started
 
@@ -30,12 +28,14 @@ Build and run:
 
 ### Screenshots
 
-![screenshot of a knight](images/cg1_screenshot_knight.png)
-![screenshot of a sphere with two light sources](images/cg1_screenshot_lighting.png)
-![screenshot of animated spheres](images/cg1_screenshot_spheres.png)
+![screenshot of a knight](screenshots/knight.png)
+
+![screenshot of a sphere with two light sources](screenshots/lighting.png)
+
+![screenshot of animated spheres](screenshots/spheres.png)
 
 
-### History of `cg1`
+### History of cg1
 
 `cg1` has been written by Markus Klinik and Simon Hengel for a cg-course at
 [Georg-Simon-Ohm-Hochschule Nuernberg](http://www.fh-nuernberg.de/index.php) in
