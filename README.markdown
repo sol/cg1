@@ -13,13 +13,9 @@ Make sure you have the following dependencies installed on your system:
     libsdl-dev
     freeglut3-dev
 
-Get the sources:
-    
-    git clone http://www.wiktory.org/~sol/code/cg1.git/
-
 [Re]build the `Makefile`:
 
-    cd cg1 && cmake -G "Unix Makefiles" .
+    cmake -G "Unix Makefiles" .
 
 Build and run:
 
