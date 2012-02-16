@@ -10,6 +10,8 @@ Make sure you have the following dependencies installed on your system:
     cmake
     libsdl-dev
     freeglut3-dev
+    libxmu-dev
+    libxi-dev
 
 [Re]build the `Makefile`:
 
