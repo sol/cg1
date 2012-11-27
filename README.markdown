@@ -30,11 +30,11 @@ Build and run:
 
 ### Screenshots
 
-![screenshot of a knight](screenshots/knight.png)
+![screenshot of a knight](https://raw.github.com/sol/cg1/master/screenshots/knight.png)
 
-![screenshot of a sphere with two light sources](screenshots/lighting.png)
+![screenshot of a sphere with two light sources](https://raw.github.com/sol/cg1/master/screenshots/lighting.png)
 
-![screenshot of animated spheres](screenshots/spheres.png)
+![screenshot of animated spheres](https://raw.github.com/sol/cg1/master/screenshots/spheres.png)
 
 
 ### History of cg1
